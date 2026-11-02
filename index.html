@@ -180,6 +180,12 @@ footer{padding-block:8px 32px;color:var(--muted);font-size:12.5px;text-align:cen
 .bbtn.own .dot{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.45)}
 .bbtn.own small{color:#d7ecff}.bbtn.own .go{color:#bff3e8}
 @media (max-width:340px){.brands ul.bgrid{grid-template-columns:1fr}}
+.toggle{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:2px;padding:10px 12px;border-radius:10px;border:1px solid #cfe0f2;background:#f3f8fe;color:var(--blue);font-weight:700;font-size:14px;cursor:pointer}
+.toggle i{font-style:normal;transition:transform .2s}
+.toggle[aria-expanded="true"] i{transform:rotate(180deg)}
+.pcard.ownc .toggle{background:linear-gradient(90deg,#eaf3fe,#e6faf5);border-color:#b9e6dc}
+.pdetail{display:flex;flex-direction:column;gap:8px;animation:rise .3s ease-out}
+.pdesc{font-size:14px;color:#33414f}
 .pcard .series{padding-left:0}
 .series{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
 .series li{font-size:14px;line-height:1.5;color:#33414f}
@@ -1043,12 +1049,16 @@ function productCard(p, opt={}){
   box.append(el("div",{class:"meta"}, el("span",{class:"tag"+(p.own?" own":""),text:p.own?"RCI 自有品牌":"代理品牌"}), ...(p.own?[el("span",{class:"tag madeby",text:"MADE BY RCI"})]:[el("span",{class:"tag",text:catLabel(p.cat)})])));
   box.append(el("h3",{text:p.name}), el("div",{class:"brand",text:p.tag}));
   if(opt.why) box.append(el("div",{class:"why",text:"✓ 符合："+opt.why}));
-  if(p.desc) box.append(el("p",{text:p.desc,style:"font-size:14px"}));
   const rows = opt.rows ? opt.rows.map(i=>p.series[i]) : p.series;
+  const det = el("div",{class:"pdetail"}); det.hidden = true;
+  if(p.desc) det.append(el("p",{class:"pdesc",text:p.desc}));
   const ul = el("ul",{class:"series"});
   rows.forEach(([n,d])=>{ const li=el("li"); li.append(el("b",{text:n}), document.createTextNode("｜"+d)); ul.append(li); });
-  box.append(ul);
-  box.append(el("a",{class:"more",href:p.url,target:"_blank",rel:"noopener",text:"官網介紹 ›"}));
+  det.append(ul, el("a",{class:"more",href:p.url,target:"_blank",rel:"noopener",text:"官網介紹 ›"}));
+  const label = open => open ? "收合" : `查看詳情（${rows.length} 個系列）`;
+  const btn = el("button",{class:"toggle",type:"button","aria-expanded":"false"}, el("span",{text:label(false)}), el("i",{"aria-hidden":"true",text:"▾"}));
+  btn.onclick = ()=>{ const open = det.hidden; det.hidden = !open; btn.setAttribute("aria-expanded",String(open)); btn.firstChild.textContent = label(open); };
+  box.append(btn, det);
   return c;
 }
 let prodCat = "all";
