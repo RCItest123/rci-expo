@@ -1,0 +1,1296 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>RCI 建材展專區</title>
+<meta name="description" content="雷暘科技實業 RCI｜產品介紹、產品選型、色彩實驗室報名、索取型錄">
+<meta name="theme-color" content="#116dcf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Open+Sans:wght@600;700&display=swap">
+<style>
+/* Layout: one narrow column (phone-first), sticky brand bar, view switching by #hash */
+:root{
+  --blue:#116dcf;      /* RCI 主色（logo R/C） */
+  --sky:#0b9ef7;       /* logo 次色 */
+  --ice:#73c7ff;       /* logo 淺藍 */
+  --teal:#0bd4b0;      /* logo i 的點 */
+  --ink:#1d2733;       /* 文字 */
+  --muted:#5d6b7a;
+  --line:#dbe5f0;
+  --bg:#f5f8fc;
+  --card:#ffffff;
+  --danger:#c62f3d;
+  --ok:#0a9c80;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-latin:"Open Sans","Noto Sans TC",system-ui,sans-serif;
+  --r:14px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+[hidden]{display:none!important}
+a{color:var(--blue)}
+img,svg{max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--ice);outline-offset:2px}
+
+.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.bar .wrap{display:flex;align-items:center;gap:12px;height:56px}
+.bar .logo{height:30px;width:auto;display:block}
+.bar .expo{font-size:13px;color:var(--muted);line-height:1.3;border-left:1px solid var(--line);padding-left:12px}
+.bar .back{margin-left:auto;border:0;background:none;color:var(--blue);font-weight:700;padding:8px 4px;cursor:pointer}
+
+main{padding-block:20px 48px}
+.view{display:flex;flex-direction:column;gap:20px}
+
+h1,h2,h3{margin:0;line-height:1.3;text-wrap:balance}
+h1{font-size:26px;font-weight:900;letter-spacing:.01em}
+h2{font-size:21px;font-weight:900}
+h3{font-size:17px;font-weight:700}
+p{margin:0}
+.lead{color:var(--muted)}
+.eyebrow{font-family:var(--f-latin);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sky)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-radius:20px;background:linear-gradient(135deg,#0d58aa 0%,var(--blue) 45%,var(--sky) 100%);color:#fff;padding:26px 22px 24px}
+.hero::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,var(--teal) 0 18%,transparent 19%),radial-gradient(circle,rgba(115,199,255,.35) 0 60%,transparent 61%)}
+.hero .eyebrow{color:var(--ice)}
+.hero h1{margin-top:6px;position:relative;z-index:1}
+.hero p{margin-top:10px;color:#e3f1ff;position:relative;z-index:1}
+
+/* home menu */
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{display:flex;flex-direction:column;gap:8px;align-items:flex-start;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:var(--r);padding:16px;cursor:pointer;text-decoration:none;color:var(--ink);min-height:128px}
+.tile:active{transform:scale(.98)}
+.tile .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:#e8f2fd;color:var(--blue)}
+.tile b{font-size:17px}
+.tile span{font-size:13px;color:var(--muted);line-height:1.45}
+.tile.feature{grid-column:1/-1;flex-direction:row;align-items:center;min-height:0;background:#ecfbf7;border-color:#b6eee1}
+.tile.feature .ic{background:var(--teal);color:#fff;flex:none}
+.tile.feature div{display:flex;flex-direction:column;gap:2px;min-width:0}
+
+.brands{display:flex;flex-direction:column;gap:10px}
+.brands ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.brands li{font-family:var(--f-latin);font-weight:700;font-size:13px;padding:6px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink)}
+.label{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em}
+
+/* chips / filters */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;line-height:1.2}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* product cards */
+.list{display:flex;flex-direction:column;gap:12px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:8px}
+.pcard .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tag{font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;background:#e8f2fd;color:var(--blue)}
+.tag.own{background:#e3faf4;color:#08806a}
+.pcard .brand{font-size:13px;color:var(--muted)}
+.pcard ul{margin:0;padding-left:1.15em;font-size:14px;color:#33414f}
+.pcard ul li{margin-top:2px}
+.pcard .more{font-size:14px;font-weight:700;text-decoration:none}
+.pcard .why{font-size:13px;color:var(--ok);font-weight:700}
+
+/* steps (selector) */
+.step{display:flex;flex-direction:column;gap:10px}
+.step .num{font-family:var(--f-latin);font-weight:700;color:var(--sky);font-size:13px;letter-spacing:.1em}
+
+/* forms */
+form{display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field>label,.field>.q{font-weight:700;font-size:15px}
+.req::after{content:" *";color:var(--danger)}
+.hint{font-size:13px;color:var(--muted);font-weight:400}
+input[type=text],input[type=tel],input[type=email],textarea{width:100%;border:1px solid #c9d6e4;background:#fff;border-radius:10px;padding:12px 12px;font-size:16px}
+input:focus,textarea:focus{border-color:var(--blue);outline:none;box-shadow:0 0 0 3px rgba(17,109,207,.15)}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;font-size:15px;line-height:1.4}
+.opt input{margin-top:3px;accent-color:var(--blue);width:18px;height:18px;flex:none}
+.opt:has(input:checked){border-color:var(--blue);background:#f0f7ff}
+.opts.grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.other-in{margin-top:4px}
+.err{color:var(--danger);font-size:13px}
+.field.bad input[type=text],.field.bad input[type=tel],.field.bad input[type=email]{border-color:var(--danger)}
+.section{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:16px}
+.privacy{font-size:12.5px;color:var(--muted);background:#eef3f9;border-radius:10px;padding:12px;line-height:1.55}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;border-radius:12px;padding:15px 16px;font-size:17px;font-weight:700;cursor:pointer;text-decoration:none;text-align:center}
+.btn.primary{background:var(--blue);color:#fff}
+.btn.primary:disabled{opacity:.6;cursor:progress}
+.btn.line{background:#06c755;color:#fff}
+.btn.ghost{background:#fff;color:var(--blue);border:1px solid #bcd3ec}
+.btns{display:flex;flex-direction:column;gap:10px}
+
+.done{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:14px}
+.done .check{width:52px;height:52px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center}
+.howto{margin:0;padding-left:1.3em;font-size:14.5px;display:flex;flex-direction:column;gap:2px}
+.howto li::marker{color:var(--blue);font-weight:700}
+.summary{white-space:pre-wrap;font-size:14px;background:#f3f7fb;border-radius:10px;padding:12px;border:1px dashed #c9d6e4;word-break:break-word}
+
+.lab-hero{border-radius:20px;padding:22px;color:#fff;background:
+  linear-gradient(120deg,rgba(11,212,176,.9),rgba(11,158,247,.9) 55%,rgba(17,109,207,.95)),
+  repeating-linear-gradient(90deg,#fff2 0 18px,#fff0 18px 36px)}
+.lab-hero .eyebrow{color:#e6fffa}
+.lab-hero p{margin-top:8px;color:#effbff}
+.swatches{display:flex;gap:6px;margin-top:14px}
+.swatches i{flex:1;height:22px;border-radius:5px;border:1px solid #fff6}
+
+footer{padding-block:8px 32px;color:var(--muted);font-size:12.5px;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#1d2733;color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;z-index:50}
+
+/* home: big buttons */
+.bigs{display:flex;flex-direction:column;gap:12px}
+.big{display:flex;align-items:center;gap:16px;padding:18px 18px;border-radius:16px;text-decoration:none;color:#fff;background:var(--blue);min-height:84px;box-shadow:0 6px 16px -10px rgba(17,109,207,.7)}
+.big:nth-child(2){background:#0d84de}
+.big:nth-child(3){background:linear-gradient(120deg,#08b896,var(--teal))}
+.big:nth-child(4){background:#fff;color:var(--blue);border:2px solid var(--blue);box-shadow:none}
+.big .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.18);flex:none}
+.big:nth-child(4) .ic{background:#e8f2fd}
+.big div{display:flex;flex-direction:column;min-width:0}
+.big b{font-size:20px;line-height:1.3}
+.big span{font-size:13.5px;opacity:.9;line-height:1.4}
+.big::after{content:"›";margin-left:auto;font-size:28px;line-height:1;opacity:.8}
+.big:active{transform:scale(.985)}
+/* 3D brand buttons */
+.brands ul.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.brands ul.bgrid li{padding:0;border:0;background:none;border-radius:0;font:inherit;min-width:0}
+.bbtn{position:relative;display:flex;align-items:center;gap:8px;height:100%;min-height:58px;padding:10px 10px;border-radius:14px;text-decoration:none;color:var(--ink);
+  background:linear-gradient(180deg,#ffffff 0%,#f1f6fc 100%);border:1px solid #d5e2f0;
+  box-shadow:0 4px 0 #c6d6e8,0 10px 16px -10px rgba(17,60,120,.45),inset 0 1px 0 #fff;transition:transform .12s ease,box-shadow .12s ease}
+.bbtn:hover{transform:translateY(-1px);box-shadow:0 5px 0 #c6d6e8,0 14px 20px -12px rgba(17,60,120,.5),inset 0 1px 0 #fff}
+.bbtn:active{transform:translateY(4px);box-shadow:0 0 0 #c6d6e8,0 4px 8px -6px rgba(17,60,120,.4),inset 0 1px 0 #fff}
+.bbtn .dot{flex:none;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;color:#fff;font-family:var(--f-latin);font-weight:700;font-size:13px;
+  background:var(--c,#116dcf);box-shadow:inset 0 -3px 0 rgba(0,0,0,.18),inset 0 2px 0 rgba(255,255,255,.35)}
+.bbtn .txt{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.bbtn b{font-family:var(--f-latin);font-size:13.5px;overflow-wrap:break-word;letter-spacing:-.01em}
+.bbtn small{font-size:11.5px;color:var(--muted)}
+.brands ul.bgrid li:last-child:nth-child(odd){grid-column:1/-1}
+.bbtn .go{margin-left:auto;flex:none;color:var(--sky);font-size:12px}
+.bbtn.own{color:#fff;border:0;background:linear-gradient(160deg,#1a7ee0 0%,#116dcf 45%,#0b9e9a 100%);
+  box-shadow:0 4px 0 #0a4c94,0 12px 20px -10px rgba(17,109,207,.7),inset 0 1px 0 rgba(255,255,255,.35)}
+.bbtn.own:hover{box-shadow:0 5px 0 #0a4c94,0 16px 24px -12px rgba(17,109,207,.75),inset 0 1px 0 rgba(255,255,255,.35)}
+.bbtn.own:active{box-shadow:0 0 0 #0a4c94,0 4px 8px -6px rgba(17,109,207,.6),inset 0 1px 0 rgba(255,255,255,.35)}
+.bbtn.own::before{content:"";position:absolute;inset:0;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.22),transparent 55%);pointer-events:none}
+.bbtn.own .dot{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.45)}
+.bbtn.own small{color:#d7ecff}.bbtn.own .go{color:#bff3e8}
+@media (max-width:340px){.brands ul.bgrid{grid-template-columns:1fr}}
+.pcard .series{padding-left:0}
+.series{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.series li{font-size:14px;line-height:1.5;color:#33414f}
+.series b{color:var(--ink)}
+.subchips{padding:10px;border-radius:12px;background:#eef5ff}
+.modecards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mode{display:flex;flex-direction:column;gap:4px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:14px;cursor:pointer}
+.mode b{font-size:18px}
+.mode span{font-size:13px;color:var(--muted);line-height:1.45}
+.mode[aria-pressed="true"]{border-color:var(--blue);background:#f0f7ff}
+.morebrands{text-decoration:none;color:var(--ink);background:#f0f7ff;border-style:dashed;border-color:#9cc3ea}
+.morebrands b{font-size:16px;color:var(--blue)}
+.morebrands span{font-size:13.5px;color:var(--muted)}
+.grouphead{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em;margin-top:4px}
+textarea{width:100%;border:1px solid #c9d6e4;background:#fff;border-radius:10px;padding:12px;font-size:16px;min-height:88px;resize:vertical}
+
+/* ===== hero with animated RCI logo (matches official banner) ===== */
+.hero2{position:relative;overflow:hidden;border-radius:20px;background:linear-gradient(135deg,#ffffff 0%,#eef4fb 55%,#e3eef9 100%);border:1px solid var(--line);min-height:260px}
+.hero2 .wave{position:absolute;inset:0;width:100%;height:100%}
+.hero2 .w1{animation:wv1 9s ease-in-out infinite alternate}
+.hero2 .w2{animation:wv2 7s ease-in-out infinite alternate}
+.hero2 .w3{animation:wv2 8s ease-in-out infinite alternate-reverse}
+.hero2 .w4{animation:wv1 10s ease-in-out infinite alternate-reverse}
+@keyframes wv1{to{transform:translate(-14px,6px)}}
+@keyframes wv2{to{transform:translate(10px,-8px)}}
+.hero-in{position:relative;z-index:1;padding:26px 14% 24px 17%;display:flex;flex-direction:column;gap:10px}
+.logo-row{display:flex;align-items:center;gap:12px}
+.logo-anim{width:112px;height:auto;overflow:visible;flex:none}
+.logo-name{display:flex;flex-direction:column;line-height:1.15}
+.logo-name b{font-family:var(--f-latin);font-size:13px;color:var(--blue);letter-spacing:.04em}
+.logo-name i{color:var(--teal);font-style:normal}
+.logo-name span{font-size:15px;font-weight:900;color:var(--blue);letter-spacing:.12em;margin-top:2px}
+.hero2 h1{color:#0d3f7c;font-size:26px}
+.hero2 p{color:#3b5575;font-size:14.5px}
+.logo-anim *{transform-box:fill-box}
+.lg-r{transform-origin:50% 100%;animation:lgR .7s cubic-bezier(.2,.8,.2,1.2) both}
+.lg-c{transform-origin:50% 50%;animation:lgC .9s .15s cubic-bezier(.2,.8,.2,1) both}
+.lg-c1,.lg-c2{animation:lgFlash 4s 1.6s ease-in-out infinite}
+.lg-i{transform-origin:50% 100%;animation:lgI .45s cubic-bezier(.2,.8,.3,1.3) both}
+.lg-i5{animation-delay:.45s}.lg-i4{animation-delay:.55s}.lg-i3{animation-delay:.65s}.lg-i2{animation-delay:.75s}.lg-i1{animation-delay:.85s}
+.lg-dot{transform-origin:50% 100%;animation:lgDrop .9s 1s cubic-bezier(.3,0,.4,1) both,lgBob 3s 2.2s ease-in-out infinite}
+.logo-name{animation:rise .6s 1.1s ease-out both}
+.hero-in h1{animation:rise .6s .9s ease-out both}.hero-in p{animation:rise .6s 1.05s ease-out both}
+@keyframes lgR{from{opacity:0;transform:translateY(30%) scaleY(.6)}to{opacity:1;transform:none}}
+@keyframes lgC{from{opacity:0;transform:rotate(-200deg) scale(.4)}to{opacity:1;transform:none}}
+@keyframes lgI{from{opacity:0;transform:translateY(-60%) scaleY(.2)}to{opacity:1;transform:none}}
+@keyframes lgDrop{0%{opacity:0;transform:translateY(-260%)}55%{opacity:1;transform:translateY(0) scale(1.2,.8)}75%{transform:translateY(-35%) scale(.95,1.05)}100%{transform:none}}
+@keyframes lgBob{0%,100%{transform:none}50%{transform:translateY(-14%) scale(1.06)}}
+@keyframes lgFlash{0%,80%,100%{fill:#0b9ef7}88%{fill:#0bd4b0}}
+@media (max-width:380px){.hero-in{padding-left:16%}.logo-anim{width:92px}}
+.line-banner{display:block;width:100%;height:auto;border-radius:14px;box-shadow:0 8px 24px -16px rgba(17,109,207,.6)}
+.fab-line{max-width:calc(100% - 32px)}
+@media (prefers-reduced-motion:reduce){.hero2 *,.logo-anim *{animation:none!important}}
+
+/* ===== motion & product visuals ===== */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+@keyframes shine{0%,62%{transform:translateX(-120%) skewX(-18deg)}100%{transform:translateX(260%) skewX(-18deg)}}
+@keyframes floaty{0%,100%{transform:translate(0,0)}50%{transform:translate(-10px,8px)}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.18);opacity:.75}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes hue{0%,100%{filter:hue-rotate(0deg)}50%{filter:hue-rotate(60deg)}}
+@keyframes slideoff{0%,30%{transform:translate(0,0)}70%{transform:translate(70px,6px)}71%,100%{transform:translate(70px,6px);opacity:0}}
+@keyframes drop{0%{transform:translateY(-40px);opacity:0}25%{opacity:1}45%,100%{transform:none;opacity:1}}
+@keyframes dash{to{stroke-dashoffset:0}}
+@keyframes bubble{0%{transform:translateY(0) scale(.6);opacity:0}15%{opacity:1}80%{transform:translateY(-62px) scale(1);opacity:1}90%{transform:translateY(-66px) scale(1.5);opacity:0}100%{opacity:0}}
+@keyframes spread1{0%,15%{transform:translate(0,0)}60%,100%{transform:translate(-62px,-18px)}}
+@keyframes spread2{0%,15%{transform:translate(0,0)}60%,100%{transform:translate(58px,-22px)}}
+@keyframes spread3{0%,15%{transform:translate(0,0)}60%,100%{transform:translate(-40px,22px)}}
+@keyframes spread4{0%,15%{transform:translate(0,0)}60%,100%{transform:translate(48px,20px)}}
+@keyframes layer{0%,10%{transform:translateX(-110%)}40%,100%{transform:none}}
+@keyframes peel{0%,55%{transform:rotate(0)}80%,100%{transform:rotate(-24deg)}}
+@keyframes sweep{0%{fill:#c9d3dd}33%{fill:#d8b25a}66%{fill:#8a5a34}100%{fill:#2a2f36}}
+@keyframes sparkle{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1)}}
+@keyframes wave{to{transform:translateX(-80px)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(11,212,176,.0),0 10px 30px -18px rgba(17,109,207,.8)}50%{box-shadow:0 0 0 4px rgba(11,212,176,.18),0 10px 30px -18px rgba(17,109,207,.8)}}
+@keyframes border{to{--ang:360deg}}
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+
+@keyframes dirt{0%{transform:translateY(-34px);opacity:0}15%{opacity:1}45%{transform:translateY(0)}60%{transform:translate(18px,-26px);opacity:1}85%,100%{transform:translate(40px,-6px);opacity:0}}
+@keyframes swirl{to{stroke-dashoffset:-26}}
+@keyframes stirrod{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(10deg)}}
+@keyframes oxide{0%,15%{opacity:0}45%{opacity:.35;fill:#d8b25a}75%,90%{opacity:.85;fill:#8a5a34}100%{opacity:0}}
+@keyframes chain{to{transform:translateX(-144px)}}
+@keyframes brick{0%{opacity:0}25%,85%{opacity:1}100%{opacity:0}}
+@keyframes evap{0%,15%{transform:scaleY(1)}55%,100%{transform:scaleY(.18)}}
+@keyframes pack{0%,15%{transform:none;opacity:1}55%,72%{transform:translate(var(--dx),var(--dy));opacity:1}82%,100%{transform:translate(var(--dx),var(--dy));opacity:0}}
+@keyframes filmin{0%,70%{opacity:0}82%,96%{opacity:1}100%{opacity:0}}
+@keyframes cap1{0%,30%{opacity:1}35%,100%{opacity:0}}
+@keyframes cap2{0%,33%{opacity:0}38%,63%{opacity:1}68%,100%{opacity:0}}
+@keyframes cap3{0%,66%{opacity:0}71%,97%{opacity:1}100%{opacity:0}}
+@keyframes primer{0%,5%{transform:scaleX(0)}25%,100%{transform:scaleX(1)}}
+@keyframes poreFill{0%,15%{transform:scaleY(0)}33%,100%{transform:scaleY(1)}}
+@keyframes peelfilm{0%,36%{opacity:0;transform:translateY(-14px)}44%,68%{opacity:1;transform:none}86%,100%{opacity:0;transform:rotate(-28deg) translate(-10px,-30px)}}
+@keyframes dropper{0%{transform:translateX(70px)}30%{transform:translateX(70px)}36%{transform:translateX(160px)}63%{transform:translateX(160px)}69%{transform:translateX(250px)}96%{transform:translateX(250px)}100%{transform:translateX(70px)}}
+@keyframes dripdot{0%{transform:translateY(0);opacity:1}70%{transform:translateY(48px);opacity:1}71%,100%{opacity:0}}
+@keyframes ripple{0%,22%{transform:scale(0);opacity:0}25%{opacity:1}45%{transform:scale(5);opacity:0}100%{opacity:0}}
+@keyframes gauge{0%,22%{transform:scaleY(.25)}45%,90%{transform:scaleY(1)}100%{transform:scaleY(.25)}}
+.view:not([hidden]){animation:rise .38s ease-out both}
+.anim{animation:rise .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 70ms)}
+.chip[aria-pressed="true"],.mode[aria-pressed="true"]{animation:pop .28s ease-out}
+
+/* hero */
+.hero::before{content:"";position:absolute;left:-30px;bottom:-50px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(115,199,255,.35),transparent 70%);animation:floaty 7s ease-in-out infinite}
+.hero::after{animation:floaty 9s ease-in-out infinite reverse}
+.hero h1,.hero p,.hero .eyebrow{animation:rise .6s ease-out both}
+.hero h1{animation-delay:.08s}.hero p{animation-delay:.16s}
+
+/* big buttons shine */
+.big{position:relative;overflow:hidden}
+.big::before{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);animation:shine 5s ease-in-out infinite;pointer-events:none}
+.big:nth-child(2)::before{animation-delay:.6s}.big:nth-child(3)::before{animation-delay:1.2s}
+.big:nth-child(4)::before{background:linear-gradient(90deg,transparent,rgba(17,109,207,.12),transparent);animation-delay:1.8s}
+
+/* product visual */
+.pvis{display:block;width:100%;height:auto;border-radius:10px;background:linear-gradient(180deg,#f3f8fe,#e6f0fb)}
+.pcard{position:relative}
+.pcard:not(.ownc) .pvis{height:92px}
+.pcard.ownc{border:0;padding:0;background:transparent;animation:glow 4s ease-in-out infinite;border-radius:18px}
+.pcard.ownc .inner{position:relative;border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:8px;background:#fff;
+  border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box,conic-gradient(from var(--ang),#116dcf,#0bd4b0,#73c7ff,#116dcf) border-box;animation:border 6s linear infinite}
+.pcard.ownc .pvis{background:linear-gradient(160deg,#0d4f9c,#116dcf 55%,#0b9ef7);}
+.pcard.ownc h3{font-size:22px;font-weight:900;background:linear-gradient(90deg,#116dcf,#0bb594);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag.madeby{font-family:var(--f-latin);letter-spacing:.12em;color:#fff;background:linear-gradient(90deg,#116dcf,#0bb594)}
+.ownhead{border-radius:18px;padding:18px;color:#fff;background:linear-gradient(135deg,#0b3f7e,#116dcf 55%,#0b9ef7);position:relative;overflow:hidden}
+.ownhead::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,var(--teal) 0 14%,transparent 15%),radial-gradient(circle,rgba(115,199,255,.3) 0 55%,transparent 56%);animation:floaty 8s ease-in-out infinite}
+.ownhead .eyebrow{color:var(--ice)}
+.ownhead h3{font-size:20px;font-weight:900;margin-top:4px}
+.ownhead p{font-size:13.5px;color:#dcecff;margin-top:6px;position:relative;z-index:1}
+.ownhead .stats{display:flex;gap:18px;margin-top:12px;position:relative;z-index:1}
+.ownhead .stats b{display:block;font-family:var(--f-latin);font-size:22px;line-height:1.1}
+.ownhead .stats span{font-size:12px;color:#cfe5ff}
+
+/* home showcase */
+.showcase{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 10px;margin-inline:-2px;scrollbar-width:none}
+.showcase::-webkit-scrollbar{display:none}
+.sc{flex:0 0 78%;max-width:300px;scroll-snap-align:start;border-radius:16px;overflow:hidden;text-decoration:none;color:#fff;background:linear-gradient(160deg,#0d4f9c,#116dcf 60%,#0b9ef7);display:flex;flex-direction:column}
+.sc .pvis{border-radius:0;background:transparent}
+.sc div{padding:4px 14px 14px;display:flex;flex-direction:column;gap:2px}
+.sc b{font-size:18px}.sc span{font-size:13px;color:#d6e9ff}
+.secthead{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.secthead a{font-size:13px;font-weight:700;text-decoration:none}
+
+/* LINE floating button */
+.fab-line{position:fixed;z-index:30;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:8px;padding:11px 16px 11px 13px;border-radius:999px;background:#06c755;color:#fff;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 8px 24px rgba(6,120,60,.35);animation:rise .5s .6s ease-out both}
+body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+
+@media (prefers-reduced-motion:reduce){.pvis *,.big::before,.hero::before,.hero::after,.ownhead::after,.pcard.ownc,.pcard.ownc .inner{animation:none!important}}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (max-width:360px){.menu{grid-template-columns:1fr}.opts.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ===================== 設定區：上線前填這裡 ===================== -->
+<script>
+const CONFIG = {
+  expoName: "台北國際建材展",
+
+  // 官方 LINE 帳號 ID（含 @），例如 "@rci123"。留空則不顯示 LINE 按鈕，只顯示「複製資料」。
+  lineId: "@rcitw",
+
+  // 客戶資料表（現有 Google 表單）
+  leadForm: {
+    action: "https://docs.google.com/forms/d/e/1FAIpQLSe2-POal0VEIo9R7MiCmKpe5jzvOZ5ACrDYC9ThjT6-M0q8pQ/formResponse",
+    pages: 3, // 表單共 3 個區段
+    entries: {
+      name: "entry.118234486",
+      company: "entry.780522644",
+      title: "entry.1167517936",
+      phone: "entry.1077813088",
+      email: "entry.1612928044",
+      nature: "entry.1945718695",
+      region: "entry.498965085",
+      apps: "entry.435724451",
+      lines: "entry.486549515",
+      needs: "entry.412240300",
+      contact: "entry.246265359",
+      lineUser: "entry.1807813944"
+    }
+  },
+
+  // 色彩實驗室報名表（另一份 Google 表單：公司名、職位、姓名、電話）。
+  // action 留空時，報名資料改走「複製＋傳到官方 LINE」。
+  labForm: {
+    action: "",
+    pages: 1,
+    entries: { company: "", title: "", name: "", phone: "" }
+  }
+};
+</script>
+
+<header class="bar">
+  <div class="wrap">
+    <a href="#home" aria-label="回首頁">
+      <svg class="logo" viewBox="0 0 123.59 75.15" role="img" aria-label="RCI 雷暘科技"><path fill="#116dcf" d="M0,19.29H21a36.75,36.75,0,0,1,7.84.81,18.48,18.48,0,0,1,6.5,2.67,13.34,13.34,0,0,1,4.43,5.05,17.08,17.08,0,0,1,1.65,7.92,15.89,15.89,0,0,1-3,9.75,13.46,13.46,0,0,1-8.72,5.09L43.44,73.45H29.14L17.82,51.8H11.93V73.45H0ZM11.93,41.7h7c1.07,0,2.2,0,3.4-.11a10.83,10.83,0,0,0,3.25-.69A5.59,5.59,0,0,0,28,39.1a5.44,5.44,0,0,0,1-3.44,5.73,5.73,0,0,0-.84-3.29A5.66,5.66,0,0,0,26,30.5a9.6,9.6,0,0,0-3-.88,24.83,24.83,0,0,0-3.29-.23h-7.8Z"/><polygon fill="#0b9ef7" points="110.57 65.78 122.5 71.71 122.5 57.08 110.57 54.57 110.57 65.78"/><polygon fill="#116dcf" points="110.57 73.45 122.5 73.45 122.5 71.71 110.57 65.78 110.57 73.45"/><polygon fill="#116dcf" points="122.5 19.29 110.57 19.29 110.57 26.91 122.5 20.99 122.5 19.29"/><polygon fill="#73c7ff" points="110.57 54.57 122.5 57.08 122.5 35.62 110.57 38.12 110.57 54.57"/><polygon fill="#0b9ef7" points="122.5 35.62 122.5 20.99 110.57 26.91 110.57 38.12 122.5 35.62"/><path fill="#0b9ef7" d="M91.55,42.12l11.19-2.35a28.16,28.16,0,0,0-3-7.5L89.5,37.37A16.91,16.91,0,0,1,91.55,42.12Z"/><path fill="#116dcf" d="M89.51,55.33a17,17,0,1,1,0-18l10.27-5.1A28.62,28.62,0,0,0,95,26.12a28.4,28.4,0,1,0,4.74,34.31Z"/><path fill="#0b9ef7" d="M91.55,50.58a16.61,16.61,0,0,1-2,4.75l10.27,5.1a28.07,28.07,0,0,0,3-7.5Z"/><path fill="#0bd4b0" d="M116.45.71A7.13,7.13,0,0,0,111,12.45l10.83-9.27A7.11,7.11,0,0,0,116.45.71Z"/><path fill="#0bd4b0" d="M116.45,15a7.12,7.12,0,0,0,5.39-11.79L111,12.45A7.12,7.12,0,0,0,116.45,15Z"/></svg>
+    </a>
+    <div class="expo" id="expoLabel">雷暘科技實業<br><span id="expoName"></span></div>
+    <button class="back" id="backBtn" type="button" hidden>‹ 首頁</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 首頁 -->
+  <section class="view" id="v-home">
+    <div class="hero2">
+      <svg class="wave" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+        <path class="w1" d="M0 0 H52 C38 60 62 110 34 170 C22 200 12 220 0 230Z" fill="#116dcf"/>
+        <path class="w2" d="M0 150 C30 190 44 250 20 300 H0Z" fill="#73c7ff" opacity=".8"/>
+        <path class="w3" d="M400 0 H352 C362 40 348 70 372 98 C386 112 400 110 400 128Z" fill="#0bd4b0" opacity=".9"/>
+        <path class="w4" d="M400 210 C376 236 384 270 364 300 H400Z" fill="#0b9ef7" opacity=".8"/>
+      </svg>
+      <div class="hero-in">
+        <div class="logo-row">
+          <svg class="logo-anim" viewBox="0 0 123.59 75.15" role="img" aria-label="RCI">
+            <path class="lg-r" fill="#116dcf" d="M0,19.29H21a36.75,36.75,0,0,1,7.84.81,18.48,18.48,0,0,1,6.5,2.67,13.34,13.34,0,0,1,4.43,5.05,17.08,17.08,0,0,1,1.65,7.92,15.89,15.89,0,0,1-3,9.75,13.46,13.46,0,0,1-8.72,5.09L43.44,73.45H29.14L17.82,51.8H11.93V73.45H0ZM11.93,41.7h7c1.07,0,2.2,0,3.4-.11a10.83,10.83,0,0,0,3.250-.69A5.59,5.59,0,0,0,28,39.1a5.44,5.44,0,0,0,1-3.44,5.73,5.73,0,0,0-.84-3.29A5.66,5.66,0,0,0,26,30.5a9.6,9.6,0,0,0-3-.88,24.83,24.83,0,0,0-3.29-.23h-7.8Z"/>
+            <g class="lg-c">
+              <path fill="#116dcf" d="M89.51,55.33a17,17,0,1,1,0-18l10.27-5.1A28.62,28.62,0,0,0,95,26.12a28.4,28.4,0,1,0,4.74,34.31Z"/>
+              <path class="lg-c1" fill="#0b9ef7" d="M91.55,42.12l11.19-2.35a28.16,28.16,0,0,0-3-7.5L89.5,37.37A16.91,16.91,0,0,1,91.55,42.12Z"/>
+              <path class="lg-c2" fill="#0b9ef7" d="M91.55,50.58a16.61,16.61,0,0,1-2,4.75l10.27,5.1a28.07,28.07,0,0,0,3-7.5Z"/>
+            </g>
+            <polygon class="lg-i lg-i5" fill="#116dcf" points="110.57 73.45 122.5 73.45 122.5 71.71 110.57 65.78 110.57 73.45"/>
+            <polygon class="lg-i lg-i4" fill="#0b9ef7" points="110.57 65.78 122.5 71.71 122.5 57.08 110.57 54.57 110.57 65.78"/>
+            <polygon class="lg-i lg-i3" fill="#73c7ff" points="110.57 54.57 122.5 57.08 122.5 35.62 110.57 38.12 110.57 54.57"/>
+            <polygon class="lg-i lg-i2" fill="#0b9ef7" points="122.5 35.62 122.5 20.99 110.57 26.91 110.57 38.12 122.5 35.62"/>
+            <polygon class="lg-i lg-i1" fill="#116dcf" points="122.5 19.29 110.57 19.29 110.57 26.91 122.5 20.99 122.5 19.29"/>
+            <g class="lg-dot"><path fill="#0bd4b0" d="M116.45.71A7.13,7.13,0,0,0,111,12.45l10.83-9.27A7.11,7.11,0,0,0,116.45.71Z"/><path fill="#0bd4b0" d="M116.45,15a7.12,7.12,0,0,0,5.39-11.79L111,12.45A7.12,7.12,0,0,0,116.45,15Z"/></g>
+          </svg>
+          <div class="logo-name"><b>RAYOUNG<br>CHEMTECH INC<i>.</i></b><span>雷暘科技實業</span></div>
+        </div>
+        <h1>特用化學品<br>開發與整合專家</h1>
+        <p>特用化學 × 研發配方整合，連結上下游，讓材料更快成為市場解決方案。</p>
+      </div>
+    </div>
+
+    <nav class="bigs" aria-label="主選單">
+      <a class="big" href="#products">
+        <span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+        <div><b>產品介紹</b><span>自有品牌與代理品牌</span></div>
+      </a>
+      <a class="big" href="#select">
+        <span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+        <div><b>產品選型</b><span>找原料、找塗料，幫你配對</span></div>
+      </a>
+      <a class="big" href="#lab">
+        <span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21.5h11.6a2 2 0 0 0 1.7-3L14 9V3"/><path d="M7 15h10"/></svg></span>
+        <div><b>色彩實驗室現場報名</b><span>留下公司、職位、姓名、電話</span></div>
+      </a>
+      <a class="big" href="#contact">
+        <span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span>
+        <div><b>留下您的資料</b><span>索取樣品、型錄，業務主動聯繫</span></div>
+      </a>
+    </nav>
+
+    <div class="step">
+      <div class="secthead"><div><div class="eyebrow">Made by RCI</div><h2>RCI 自有產品</h2></div><a href="#products">看全部 ›</a></div>
+      <div class="showcase" id="showcase"></div>
+    </div>
+
+    <div class="brands">
+      <div class="label">RCI 自有品牌</div>
+      <ul class="bgrid" id="ownBrands"></ul>
+      <div class="label" style="margin-top:6px">代理品牌</div>
+      <ul class="bgrid" id="agentBrands"></ul>
+    </div>
+  </section>
+
+  <!-- 產品介紹 -->
+  <section class="view" id="v-products" hidden>
+    <div>
+      <div class="eyebrow">Products</div>
+      <h2>產品介紹</h2>
+    </div>
+    <div class="chips" id="prodFilter" role="group" aria-label="篩選"></div>
+    <div class="list" id="prodList"></div>
+    <a class="btn ghost" href="https://www.rayoungnet.com/" target="_blank" rel="noopener">前往 RCI 官網看完整資料</a>
+  </section>
+
+  <!-- 產品選型 -->
+  <section class="view" id="v-select" hidden>
+    <div>
+      <div class="eyebrow">Product Finder</div>
+      <h2>產品選型</h2>
+      <p class="lead">回答幾個問題，幫你找到適合的產品。</p>
+    </div>
+    <div class="step">
+      <div class="num">STEP 1</div>
+      <h3>你在找什麼？</h3>
+      <div class="modecards">
+        <button class="mode" type="button" data-mode="raw" aria-pressed="false"><b>找原料</b><span>顏料、添加劑、樹脂、功能填料、表面處理藥劑</span></button>
+        <button class="mode" type="button" data-mode="coat" aria-pressed="false"><b>找塗料</b><span>RCI 自有塗料與樹脂，直接解決表面問題</span></button>
+      </div>
+    </div>
+
+    <div id="rawSteps" hidden>
+      <div class="step">
+        <div class="num">STEP 2</div>
+        <h3>用在什麼產業／應用？</h3>
+        <div class="chips" id="rawApp" role="group" aria-label="應用"></div>
+      </div>
+      <div class="step" id="rawOptStep" style="margin-top:20px" hidden>
+        <div class="num">STEP 3</div>
+        <h3>需要哪一類原料？</h3>
+        <div class="chips" id="rawOpt" role="group" aria-label="原料"></div>
+      </div>
+    </div>
+
+    <div id="coatSteps" hidden>
+      <div class="step">
+        <div class="num">STEP 2</div>
+        <h3>你的用途或基材是？<span class="hint">（可複選）</span></h3>
+        <div class="chips" id="coatUse" role="group" aria-label="用途"></div>
+      </div>
+    </div>
+
+    <div class="step" id="selResultWrap" hidden>
+      <div class="num">推薦結果</div>
+      <div class="list" id="selResult"></div>
+      <a class="btn primary" href="#contact" id="selToContact">索取這些產品的資料</a>
+    </div>
+  </section>
+
+  <!-- 色彩實驗室 -->
+  <section class="view" id="v-lab" hidden>
+    <div class="lab-hero">
+      <div class="eyebrow">Color Lab · On Site</div>
+      <h2>色彩實驗室 現場報名</h2>
+      <p>現場體驗珠光與特殊效果色彩，請留下資料，工作人員將為您安排。</p>
+      <div class="swatches" aria-hidden="true"><i style="background:#d9c08a"></i><i style="background:#9bc9e8"></i><i style="background:#c99bd1"></i><i style="background:#8fd6c4"></i><i style="background:#e7a37e"></i><i style="background:#b7bcc4"></i></div>
+    </div>
+    <form id="labForm" novalidate>
+      <div class="section">
+        <div class="field"><label for="lab-company" class="req">公司名稱</label><input type="text" id="lab-company" autocomplete="organization" required></div>
+        <div class="field"><label for="lab-title" class="req">職位</label><input type="text" id="lab-title" autocomplete="organization-title" required></div>
+        <div class="field"><label for="lab-name" class="req">姓名</label><input type="text" id="lab-name" autocomplete="name" required></div>
+        <div class="field"><label for="lab-phone" class="req">電話</label><input type="tel" id="lab-phone" autocomplete="tel" inputmode="tel" required></div>
+      </div>
+      <p class="privacy">本公司依個人資料保護法蒐集您的姓名、公司名稱與聯絡方式，僅用於本次活動安排與後續客戶服務。送出即表示您同意上述用途。</p>
+      <button class="btn primary" type="submit" id="labSubmit">送出報名</button>
+    </form>
+  </section>
+
+  <!-- 留資料 -->
+  <section class="view" id="v-contact" hidden>
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h2>留下資料｜索取樣品與型錄</h2>
+      <p class="lead">感謝您蒞臨 RCI 攤位！填寫後即可一鍵加入 RCI 官方 LINE（@rcitw），獲取最新產品與活動資訊。</p>
+    </div>
+    <img class="line-banner" src="data:image/webp;base64,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" alt="RCI 官方 LINE 已上線，LINE ID：@rcitw" width="964" height="268">
+    <form id="leadForm" novalidate>
+      <div class="section">
+        <h3>基本資料</h3>
+        <div class="field"><label for="f-name" class="req">姓名</label><input type="text" id="f-name" autocomplete="name" required></div>
+        <div class="field"><label for="f-company" class="req">公司名稱</label><input type="text" id="f-company" autocomplete="organization" required></div>
+        <div class="field"><label for="f-title" class="req">職位／職稱</label><input type="text" id="f-title" autocomplete="organization-title" required></div>
+        <div class="field"><label for="f-phone" class="req">聯絡電話</label><input type="tel" id="f-phone" autocomplete="tel" inputmode="tel" required></div>
+        <div class="field"><label for="f-email" class="req">電子郵件</label><input type="email" id="f-email" autocomplete="email" inputmode="email" required></div>
+        <div class="field" data-group="nature"><div class="q req">貴公司性質</div><div class="opts" id="o-nature"></div></div>
+        <div class="field" data-group="region"><div class="q req">公司所在區域</div><div class="opts grid2" id="o-region"></div></div>
+      </div>
+      <div class="section">
+        <h3>應用需求</h3>
+        <div class="field" data-group="apps"><div class="q req">您對以下哪些應用類別有興趣？<span class="hint">（可複選）</span></div><div class="opts" id="o-apps"></div></div>
+        <div class="field" data-group="lines"><div class="q req">您對 RCI 以下哪些產品線有興趣？<span class="hint">（可複選）</span></div><div class="opts" id="o-lines"></div></div>
+        <div class="field" data-group="needs"><div class="q req">您目前的需求項目<span class="hint">（可複選）</span></div><div class="opts" id="o-needs"></div></div>
+      </div>
+      <div class="section">
+        <h3>聯繫方式偏好</h3>
+        <div class="field" data-group="contact"><div class="q req">您希望我們如何與您聯繫？<span class="hint">（可複選）</span></div><div class="opts" id="o-contact"></div></div>
+        <div class="field" id="lineUserField"><label for="f-lineuser">您的 LINE ID <span class="hint">（如需業務主動以 LINE 聯繫，請填寫）</span></label><input type="text" id="f-lineuser" autocomplete="off"></div>
+        <div class="field"><label for="f-note">備註 <span class="hint">（如有特定需求，請在這裡說明）</span></label><textarea id="f-note" placeholder="例如：想了解外牆耐候方案、需要樣品寄送地址…"></textarea></div>
+      </div>
+      <p class="privacy">📋 個人資料保護告知：本公司將依個人資料保護法蒐集您的個人資料（含姓名、公司名稱、聯絡方式等），用於客戶服務、產品資訊提供、業務聯繫及技術支援等用途。您可隨時聯繫我們（info@rayoungnet.com）要求查詢、更正或刪除您的資料。送出即表示您同意上述蒐集、處理及利用。</p>
+      <p class="err" id="leadErr" hidden></p>
+      <button class="btn primary" type="submit" id="leadSubmit">送出資料</button>
+    </form>
+  </section>
+
+  <!-- 送出完成 -->
+  <section class="view" id="v-done" hidden>
+    <div class="done">
+      <div class="check" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div>
+      <h2 id="doneTitle">已收到您的資料</h2>
+      <p class="lead" id="doneText">最後一步：加入 RCI 官方 LINE，把資料傳給我們，之後的型錄、樣品與活動通知都會在 LINE 上聯繫您。</p>
+      <ol class="howto"><li>按下綠色按鈕，資料會自動複製</li><li>開啟 RCI 官方 LINE（@rcitw）並加入好友</li><li>在聊天框「貼上」後送出，業務就會與您聯繫</li></ol>
+      <div class="summary" id="doneSummary"></div>
+      <div class="btns">
+        <a class="btn line" id="lineBtn" href="#" target="_blank" rel="noopener">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6.1c1.5-1.6 2.2-3.2 2.2-4.9C22 6.6 17.5 3 12 3Z"/></svg>
+          複製資料並開啟官方 LINE
+        </a>
+        <button class="btn ghost" type="button" id="copyBtn">複製資料</button>
+        <a class="btn ghost" href="#home">回首頁</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">© Rayoung Chemtech Inc. 雷暘科技實業有限公司 · <a href="https://www.rayoungnet.com/" target="_blank" rel="noopener">rayoungnet.com</a></footer>
+<div class="toast" id="toast" hidden></div>
+<a class="fab-line" id="fabLine" href="#contact"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6.1c1.5-1.6 2.2-3.2 2.2-4.9C22 6.6 17.5 3 12 3Z"/></svg>加入官方 LINE 獲取最新資訊</a>
+
+<script>
+/* ===================== 產品資料（來源：2025 雷暘產品型錄 V2、rayoungnet.com） ===================== */
+const SITE = "https://www.rayoungnet.com";
+const CATS = [
+  {id:"own",     label:"RCI 自有產品"},
+  {id:"pig",     label:"顏料／色料"},
+  {id:"add",     label:"添加劑／分散劑／阻燃"},
+  {id:"resin",   label:"樹脂／塗層前驅體"},
+  {id:"filler",  label:"功能填料／奈米材料"},
+  {id:"surface", label:"表面處理／前處理"}
+];
+
+/* 找原料：Step 2 應用產業 → Step 3 該產業對應的原料（依《2025 雷暘產品型錄 V2》）
+   每個選項：[id, 名稱, [[品牌id, 系列列號(null=全部)], ...], 對應表單應用類別(可省略)] */
+const APP_TREE = [
+  {id:"coat", label:"塗料", form:"通用工業塗料 (General Industrial)", opts:[
+    ["coat_res","樹脂／塗層前驅體",[["duravance",null],["trayx",null],["durazane",null],["nanox",null],["mitsui",[0,1]]]],
+    ["coat_pearl","珠光／效果顏料",[["susonity",[0,1,2,3,4,5]]],"特殊珠光效果應用 (Effect Pigment Applications)"],
+    ["coat_pig","有機／無機顏料、色漿",[["sudarshan",[0,1,4]],["huayuan",null]]],
+    ["coat_anticor","防蝕顏料與石墨烯",[["sudarshan",[3]],["um",null]],"抗污/防刮塗料 (Anti-Stain/Scratch-Resistant)"],
+    ["coat_fluor","螢光／夜光／示漏顏料",[["aralon",[0,1,3]]]],
+    ["coat_dye","木器染料與色漿",[["modern",null],["sudarshan",[8]]],"木器塗料 (Wood Coating)"],
+    ["coat_add","消泡／分散／流變助劑",[["siliconi",null],["borregaard",null],["anpoly",null],["raysitive",null]]],
+    ["coat_wax","蠟與阻燃（防火塗料）",[["clariant",null]]],
+    ["coat_nano","奈米鑽石（耐磨、增硬）",[["carbodeon",[0,2]],["swchem",null]],"抗污/防刮塗料 (Anti-Stain/Scratch-Resistant)"],
+    ["coat_insul","隔熱填料／氣凝膠",[["quartzene",null],["aeropor",null]],"隔熱材料 (Thermal Insulation)"],
+    ["coat_cb","碳黑",[["csrc",[1]]]]
+  ]},
+  {id:"print", label:"印刷／油墨／噴墨", form:"油墨 (Ink)", opts:[
+    ["pr_pig","顏料／色漿",[["sudarshan",[1,2]],["huayuan",null]]],
+    ["pr_pearl","珠光顏料",[["susonity",[0,1,2,3]]],"特殊珠光效果應用 (Effect Pigment Applications)"],
+    ["pr_fluor","螢光／防偽色料",[["aralon",[2,5]]]],
+    ["pr_dye","染料",[["modern",null],["sudarshan",[6]]]],
+    ["pr_cb","碳黑",[["csrc",[1]]]],
+    ["pr_add","添加劑／分散劑／蠟",[["siliconi",[2]],["borregaard",[1,2]],["clariant",[0]],["raysitive",null]]],
+    ["pr_res","樹脂",[["mitsui",null]]]
+  ]},
+  {id:"plastic", label:"塑橡膠與熱熔膠", opts:[
+    ["pl_pig","顏料",[["sudarshan",[2,9]],["huayuan",null]]],
+    ["pl_pearl","珠光／雷射標記粉體",[["susonity",[0,6]]],"特殊珠光效果應用 (Effect Pigment Applications)"],
+    ["pl_fluor","螢光顏料",[["aralon",[4]]]],
+    ["pl_cb","碳黑（輪胎、橡塑、導電）",[["csrc",null]]],
+    ["pl_wax","聚烯烴蠟／無鹵阻燃",[["clariant",null]]],
+    ["pl_res","石油樹脂（色母、熱熔膠）",[["mitsui",null]]],
+    ["pl_nano","奈米鑽石補強",[["carbodeon",[0]],["swchem",null]]],
+    ["pl_add","膠黏劑添加劑",[["raysitive",null],["borregaard",[0]]]]
+  ]},
+  {id:"stat", label:"文具／墨水", opts:[
+    ["st_paste","水性色漿",[["sudarshan",[8]]]],
+    ["st_fluor","螢光／標記筆色料",[["aralon",[0,7,2]]]],
+    ["st_dye","水溶性染料",[["sudarshan",[6]]]]
+  ]},
+  {id:"anod", label:"鋁陽極處理", opts:[
+    ["an_chem","藥水",[["alufinish",null]]],
+    ["an_dye","陽極染料",[["sudarshan",[7]],["modern",null]]]
+  ]},
+  {id:"textile", label:"紡織／皮革／造紙", opts:[
+    ["tx_dye","染料",[["modern",null],["sudarshan",[6]]]],
+    ["tx_pig","纖維用顏料",[["sudarshan",[2]]]],
+    ["tx_fluor","螢光印花",[["aralon",[6]]]]
+  ]},
+  {id:"cosm", label:"彩妝／保養品／清潔劑", opts:[
+    ["cs_pearl","化妝品級珠光與功效成分",[["susonity",[7]]]],
+    ["cs_dye","清潔劑用染料",[["sudarshan",[6]]]],
+    ["cs_defoam","消泡劑",[["siliconi",[1]]]],
+    ["cs_filler","去角質輕質顆粒",[["aeropor",[0]]]]
+  ]},
+  {id:"agri", label:"農業", opts:[
+    ["ag_seed","種子著色顏料",[["sudarshan",[5]]]],
+    ["ag_paste","農化用色漿／標識染料",[["sudarshan",[9,6]]]]
+  ]},
+  {id:"elec", label:"電子業／半導體", opts:[
+    ["el_af","防指紋樹脂",[["nanox",null]]],
+    ["el_barrier","阻水阻氣／耐熱塗層",[["durazane",null],["duravance",[0,4]]]],
+    ["el_wear","耐磨保護（氟化 UV 丙烯酸）",[["duravance",[6]]]],
+    ["el_cond","導電／絕緣碳黑",[["csrc",[2]]]],
+    ["el_thermal","導熱奈米鑽石",[["carbodeon",[0]],["swchem",null]]],
+    ["el_func","功能粉體（雷射標記、導電、紅外反射）",[["susonity",[6]]]],
+    ["el_leak","檢漏顏料",[["aralon",[2,3]]]]
+  ]},
+  {id:"build", label:"混凝土／砂漿建材", form:"輕質混凝土/砂漿 (Lightweight Concrete/Mortar)", opts:[
+    ["bd_light","輕質填料",[["aeropor",null]]],
+    ["bd_aero","氣凝膠隔熱",[["quartzene",null]],"隔熱材料 (Thermal Insulation)"],
+    ["bd_graph","石墨烯補強",[["um",[0]]]],
+    ["bd_iron","氧化鐵顏料",[["huayuan",null]]],
+    ["bd_hydro","疏水劑",[["siliconi",[0]]]],
+    ["bd_disp","乾拌分散劑",[["borregaard",[2]]]]
+  ]},
+  {id:"comp", label:"複合材料／包裝", form:"輕質複合材料 (Lightweight Composites)", opts:[
+    ["cp_cnf","奈米纖維素",[["anpoly",null],["borregaard",[0]]]],
+    ["cp_nano","奈米鑽石",[["carbodeon",[0]],["swchem",null]]],
+    ["cp_fr","無鹵阻燃",[["clariant",[1]]]]
+  ]}
+];
+
+/* 找塗料：用途（依型錄 RCI 自有產品表） */
+const COAT_USES = [
+  {id:"surface", label:"金屬／石材／木材／玻璃 耐候保護"},
+  {id:"coil",    label:"卷鋼塗料"},
+  {id:"car",     label:"汽車美容鍍膜"},
+  {id:"hard",    label:"高硬度耐刮硬塗層"},
+  {id:"release", label:"模具脫模／抗沾黏"},
+  {id:"anticor", label:"耐腐蝕"},
+  {id:"heat",    label:"耐高溫"},
+  {id:"elec",    label:"電子業耐磨保護"},
+  {id:"pprimer", label:"塑膠底漆／增加印刷性"},
+  {id:"cement",  label:"水泥等大孔隙基材底漆"},
+  {id:"stone",   label:"花崗岩／大理石底漆"},
+  {id:"peel",    label:"暫時性可剝保護漆"},
+  {id:"water",   label:"水性塗料用樹脂"},
+  {id:"additive",label:"塗料／油墨／膠黏劑添加劑"}
+];
+
+/* 品牌與產品（line = 對應 Google 表單「產品線」選項） */
+const PRODUCTS = [
+  // ---------- RCI 自有 ----------
+  {id:"hyperdurays", cat:"own", own:true, name:"HyperDurays®", tag:"多功能高效鍍膜塗料",
+   desc:"源自航太與軍規的預陶瓷塗料（液態玻璃）。1–10 µm 超薄塗層，硬度 2H–7H、耐熱 >400°C、水接觸角最高 125°，SGS 4000 小時耐候（約 20 年）。",
+   series:[["卷鋼塗料 CP-0511／CP-0412a","高疏水，無氟達 PVDF 級耐久，0T 不裂"],["金屬 MT-0722／石材 ST-0825／木材 WD-0319／玻璃 GS-1002","高疏水耐候保護，抑制藻類，不黃變"],["汽車美容 1215SI／1030SI","類鑽石高光澤鍍膜，疏水疏油"],["高硬度耐刮硬塗層","硬度與柔韌兼具，耐刮耐衝擊"],["脫模 0612KR","模具用抗沾黏塗層，降低摩擦"],["嚴苛環境 TP-1030B（2K）","氟化矽樹脂，耐腐蝕，20–30 µm"]],
+   coat:{coil:0,surface:1,car:2,hard:3,release:4,anticor:5},
+   apps:["protect","bake","wood"], url:SITE+"/product_m3a", line:"RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)"},
+  {id:"duravance", cat:"own", own:true, name:"Duravance®", tag:"高功能合成共聚樹脂與添加劑",
+   desc:"Si–N 聚矽氮烷、Si–O 聚矽氧烷、Si–F 矽氟樹脂；側鏈氟改質，氟僅 ppm 級。HyperDurays 的核心技術。",
+   series:[["聚矽氮烷樹脂","快速固化／慢速固化"],["RC 系列","聚矽氮烷共聚物，依硬度與效益區分"],["RD 系列","聚矽氧烷共聚物，依結構區分"],["RF 系列","含氟改質聚矽氮烷共聚物"],["RT 系列","耐高溫聚矽氮烷共聚物"],["AF 系列","搭配 RCI 樹脂的含氟添加劑"],["氟化 UV 丙烯酸樹脂","電子業耐磨耗保護"]],
+   coat:{hard:1,anticor:3,heat:4,elec:6,surface:0},
+   apps:["protect","bake","barrier","af"], url:SITE+"/product_m1b", line:"RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)"},
+  {id:"trayx", cat:"own", own:true, name:"T-RayX®", tag:"高功能共聚樹脂與添加劑",
+   desc:"矽基水性解決方案，環保配方。矽-丙烯酸 IPN、核殼、自交聯分散體與金屬無機矽酸鹽，兼顧耐熱、柔韌與高填料。",
+   series:[["矽-丙烯酸共聚物 IPN","矽結構 5～30%"],["核殼結構","良好柔軟性與延展性"],["自交聯分散體","不需成膜助劑"],["無機有機混成","耐溫、耐候、抗汙"],["矽-丙烯酸共聚物 IPN","矽結構 >60%，高耐熱、柔韌、高填料"],["金屬無機矽酸鹽","純無機、耐高溫、初期耐水性佳"]],
+   coat:{water:0,heat:4,surface:3},
+   apps:["arch","floor","protect"], url:SITE+"/product_m1c", line:"RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)"},
+  {id:"hydrorayx", cat:"own", own:true, name:"HydroRayX", tag:"多功能高效塗料",
+   desc:"自交聯丙烯酸酯體系，取代傳統水性壓克力與 PU 塗料，耐久性更佳。",
+   series:[["塑膠底漆 primer","增加印刷性"],["水泥基材底漆","大孔隙型基材"],["花崗岩／大理石底漆","小孔隙型基材"],["暫時性防護漆","抗刮、可回黏、可剝"]],
+   coat:{pprimer:0,cement:1,stone:2,peel:3},
+   apps:["plasticpaint","floor","protect"], url:SITE+"/product_b10a", line:"RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)"},
+  {id:"raysitive", cat:"own", own:true, name:"RaySitive", tag:"添加劑",
+   desc:"針對有機樹脂體系開發，應用於塗料、油墨、膠黏劑；部分規格可對標國際大廠。",
+   series:[["塗料／油墨／膠黏劑添加劑","品質穩定，歡迎洽詢"]],
+   coat:{additive:0},
+   apps:["arch","bake","ink","hma"], url:SITE+"/product_m2l", line:"RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)"},
+
+  // ---------- 顏料／色料 ----------
+  {id:"susonity", cat:"pig", name:"SUSONITY", tag:"原 Merck Surface Solutions 珠光顏料｜台灣總代理",
+   desc:"全球珠光顏料領導品牌，工業塗料與個人護理應用。",
+   series:[["Iriodin®","珠光顏料，珍珠效果"],["Pyrisma®","高飽和度光艷珠光"],["Xirallic®","晶鑽顏料，水晶效果"],["Colorstream®","幻彩，多色角度變化"],["Meoxal®","金砂顏料，金屬光澤"],["Miraval®","宙光顏料，多彩閃耀"],["Iriotec®","功能粉體：雷射標記、導電、紅外線反射"],["Ronastar®／Colorona®／Timiron®","個人護理用珠光"]],
+   apps:["arch","bake","plasticpaint","ink","eng","cosm","foil","conduct"], url:SITE+"/news/12-susonity-cooprate-in-asia-1.html", line:"SUSONITY 珠光顏料"},
+  {id:"sudarshan", cat:"pig", name:"Sudarshan", tag:"顏料／色漿／染料（合併 Heubach 與 Clariant Colorants）",
+   desc:"有機與無機色料，用於塗料、油墨、塑膠、化妝品等。",
+   series:[["Colanyl®／Colanyl Oxide®","水性無樹脂色漿，低／零 VOC"],["Hostaperm®／Novoperm®","高性能有機顏料"],["PV Fast®","塑膠、纖維用高耐性顏料"],["HEUCOPHOS®","活性防蝕磷酸鹽顏料"],["HEUCODUR®／VANADUR®","高遮蓋耐候無機顏料"],["Agrocer®","種子著色顏料"],["Sanolin®／Duasyn®","水溶性染料，清潔、墨水、皮革"],["Sanodal®／Sanodye®／Sanodure®","鋁陽極染料（原開瑞色彩），耐光值可達 8 級"],["Hostafine®／Flexonyl®／AQUIS™","水性色漿：木器、文具、墨水、調色"],["Graphtol®／Licosperse™","經濟型塑膠顏料；礦物油基色漿（農化、肥料）"]],
+   apps:["arch","wood","bake","protect","ink","eng","stationery","agri","textile","cosm","anodye"], url:SITE+"/product_b5a"},
+  {id:"aralon", cat:"pig", name:"Aralon", tag:"螢光與特殊色料",
+   desc:"螢光、夜光／磷光、UV 顯色防偽顏料，高階品無甲醛。",
+   series:[["Aragen／Araqua","無甲醛高亮螢光（溶劑／水性）"],["Araglo","稀土長效蓄光磷光"],["Araguard／Aralux","UV 顯色防偽、檢漏"],["Aramoist","遇水 UV 下發光，示漏用"],["Araplast","聚烯烴、TPU 熔融型螢光"],["Arajet／Araprint","噴墨、印刷油墨用"],["Aratex","水性螢光分散體，紡織印刷"],["Aramark","標記筆用無甲醛螢光乳液"]],
+   apps:["arch","bake","ink","inkjet","eng","stationery","textile","leak"], url:SITE+"/product_b2a"},
+  {id:"huayuan", cat:"pig", name:"華源新材", tag:"氧化鐵顏料（Hyrox 系列）",
+   desc:"通用及微米級氧化鐵，色彩穩定、遮蓋力強。",
+   series:[["氧化鐵紅／黃／黑／橙／棕","通用與微米級"],["複合鐵綠","複合調配鐵綠色系"]],
+   apps:["arch","floor","build","eng","ink"], url:SITE+"/product_b7a"},
+  {id:"modern", cat:"pig", name:"現代化學科技", tag:"染料／奈米色漿",
+   desc:"水與醇可共溶的含金染料與染料水。",
+   series:[["ModerAcid S 系列","水／醇雙溶染料粉，高溶解度與耐候"]],
+   apps:["wood","ink","inkjet","textile","anodye"], url:SITE+"/product_b13a"},
+
+  // ---------- 添加劑／分散劑／阻燃 ----------
+  {id:"clariant", cat:"add", name:"Clariant", tag:"吸附劑與添加劑事業單元",
+   desc:"塑膠、塗料、油墨用高性能添加劑。",
+   series:[["Licocene®","聚烯烴蠟：降黏、潤滑脫模、分散、抗刮"],["Exolit®","無鹵阻燃劑，工程塑料與膨脹型防火塗料"]],
+   apps:["eng","hma","ink","bake","thermal"], url:SITE+"/product_b6a"},
+  {id:"siliconi", cat:"add", name:"Siliconi", tag:"水性／溶劑／UV 消泡破泡｜台灣代理",
+   desc:"含矽與無矽環保型消泡劑，可客製或替代現有產品。",
+   series:[["ESASIL®","APEO-free 矽基消泡；部分可作建材疏水"],["Silair®","有機改性矽氧烷長效消泡"],["SILTOP®","含矽／無矽消泡與表面張力調節"]],
+   apps:["arch","wood","floor","bake","ink","cosm","build"], url:SITE+"/product_b12a"},
+  {id:"borregaard", cat:"filler", name:"Borregaard", tag:"Exilva® MFC、生質分散劑（挪威）",
+   desc:"天然生質搖變劑與木質素分散劑，價格具競爭力。",
+   series:[["Exilva®","微纖化纖維素 MFC，抗沉降、流變穩定"],["Vanisperse® CB","水性碳黑／顏料分散劑"],["Ultrazine® NA／Borresperse® NA","木質素分散劑"]],
+   apps:["arch","wood","hma","inkjet","ink","build"], url:SITE+"/product_b3a"},
+
+  // ---------- 樹脂／塗層前驅體 ----------
+  {id:"durazane", cat:"resin", name:"Merck Durazane®", tag:"聚矽氮烷（德國默克）",
+   desc:"OPSZ 有機與 PHPS 無機聚矽氮烷。",
+   series:[["Durazane® 1000","有機 OPSZ，耐候、抗刮、疏水"],["Durazane® 2000","無機 PHPS，類石英 SiO₂ 屏障層"]],
+   apps:["protect","bake","barrier"], url:SITE+"/product_m1a"},
+  {id:"mitsui", cat:"resin", name:"三井化學", tag:"芳香族石油樹脂 FTR®",
+   desc:"潤滑、分散與抗刮，提升加工效率。",
+   series:[["Zero 系列","低色數、超低氣味、低 VOC"],["2000／6000／7000／8000","依軟化點分級"],["FMR 系列","酸／酐改質，附著與分散更佳"]],
+   apps:["eng","hma","ink","bake"], url:SITE+"/product_b9a"},
+  {id:"nanox", cat:"resin", name:"NANO-X", tag:"UV／濕氣固化防指紋樹脂",
+   desc:"抗油污、耐磨、易清潔，快速固化。",
+   series:[["x-tec®","UV 固化防指紋樹脂，玻璃與塑膠"],["SiliXan®","濕氣固化有機-無機雜化樹脂"],["x-protect®","成品級防指紋塗層"]],
+   apps:["af","protect","plasticpaint"], url:SITE+"/product_b13a"},
+
+  // ---------- 功能填料／奈米材料 ----------
+  {id:"carbodeon", cat:"filler", name:"Carbodeon uDiamond®", tag:"奈米鑽石分散液（4～6 nm）",
+   desc:"奈米物理交聯劑，提升硬度、韌度、耐熱耐磨，不影響透明度。",
+   series:[["Vox／Hydrogen／Amine","不同官能基的粉體與分散液"],["Plating Additive","化學鍍鎳複合添加劑"],["Fluoropolymer Additive","PTFE／氟聚合物降摩擦"]],
+   apps:["bake","protect","plasticpaint","eng","comp","conduct"], url:SITE+"/product_b4a"},
+  {id:"swchem", cat:"filler", name:"SW Chemical", tag:"功能型奈米鑽石粉",
+   desc:"提升機械強度、耐磨與熱裂解溫度。",
+   series:[["KP 系列","奈米鑽石粉體"],["KS 系列","奈米鑽石分散液／膏體"]],
+   apps:["bake","eng","comp","conduct"], url:SITE+"/product_b13a"},
+  {id:"um", cat:"filler", name:"Universal Matter", tag:"Genable™ 石墨烯（併購 AGM）｜台灣獨家",
+   desc:"FJH 閃速焦耳加熱製程，低添加量即有效。",
+   series:[["Genable™","塗料分散、混凝土、瀝青用石墨烯／石墨化碳"],["水性石墨烯環氧防蝕底漆","屏障、耐蝕"]],
+   apps:["protect","build","floor","conduct"], url:SITE+"/product_b1a"},
+  {id:"quartzene", cat:"filler", name:"Svenska Aerogel", tag:"Quartzene® 二氧化矽氣凝膠（瑞典）",
+   desc:"超輕、低導熱，粉體與水性漿料。",
+   series:[["Quartzene®","孔隙率 >97%，熱導 0.018～0.022 W/m·K"],["RCI 水性氣凝膠漿料","厚塗不裂、不揚塵"]],
+   apps:["thermal","arch","build"], url:SITE+"/product_b11a"},
+  {id:"aeropor", cat:"filler", name:"Aeropor®", tag:"建築用輕質填料（德國）",
+   desc:"閉孔多孔、疏水結構：輕量、隔熱、快乾、耐火。",
+   series:[["Aeropor®","多粒徑輕質填料"],["U-Fill S／U-Fill SL","通用級，兼顧結構支撐與隔熱"]],
+   apps:["build","thermal","arch","cosm"], url:SITE+"/product_b13a", line:"AEROPOR 輕質材料系列"},
+  {id:"anpoly", cat:"filler", name:"ANPOLY", tag:"奈米纖維素 CNF",
+   desc:"補強、分散與流變，環保永續。",
+   series:[["Re:ancel™","E-／M-／PD-／T-CNF 與 Dust Shield"]],
+   apps:["arch","comp"], url:SITE+"/product_b13a"},
+  {id:"csrc", cat:"pig", name:"CSRC 中橡", tag:"碳黑（無機色料）：特用、導電與回收碳黑",
+   desc:"塑橡膠、塗料油墨與電池用碳黑。",
+   series:[["Continex／Satin Black／Caeneus","輪胎與橡塑用碳黑"],["Erebos","油墨塗料用"],["Steropes","導電／絕緣"],["回收碳黑 rCB","減少 62% 碳足跡"]],
+   apps:["rubber","eng","ink","bake","conduct"], url:SITE+"/product_b13a"},
+
+  // ---------- 表面處理 ----------
+  {id:"alufinish", cat:"surface", name:"AluFinish", tag:"鋁陽極處理藥水（德國）｜台日韓獨家",
+   desc:"全系列鋁陽極處理藥水，用於建築、汽車與電子。",
+   series:[["Alficlean","前處理清洗／除油"],["Alfisatin／Steinex","鹼性蝕刻、霧面"],["Alfideox","除灰／活化"],["Alfinox","陽極氧化浴添加劑，總成本約降 13%"],["Alfiseal","封孔添加劑，Qualanod 認可"],["Alficolor／Tin ColorAL","電解著色"],["Alfiflex","化學／電化學拋光"],["Alupolish","陽極鋁清潔保養"]],
+   apps:["anochem"], url:SITE+"/product_m9a.html"}
+];
+
+/* Google 表單選項（與現有表單一字不差） */
+const OPTS = {
+  nature:["經銷商 (Distributor)","設計師/建築師 (Designer/Architect)","媒體/行銷 (Press/Marketing)","終端客戶 (End Customer)","裝修工程公司 (Renovation Contractor)","建材製造商 (Building Material Manufacturer)","塗料/油墨製造商 (Coating/Ink Manufacturer)"],
+  region:["北區","中區","南區","東區","海外"],
+  apps:["內牆塗料 (Interior Wall Coating)","外牆塗料 (Exterior Wall Coating)","抗污/防刮塗料 (Anti-Stain/Scratch-Resistant)","高端裝飾塗料 (Premium Decorative)","通用工業塗料 (General Industrial)","木器塗料 (Wood Coating)","卷材塗料 (Coil Coating)","噴墨塗料 (Inkjet)","油墨 (Ink)","輕質混凝土/砂漿 (Lightweight Concrete/Mortar)","隔熱材料 (Thermal Insulation)","輕質複合材料 (Lightweight Composites)","特殊珠光效果應用 (Effect Pigment Applications)"],
+  lines:["RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)","SUSONITY 珠光顏料","AEROPOR 輕質材料系列"],
+  needs:["樣品索取 (Sample Request)","電子型錄 (Digital Brochures)","安排客戶拜訪 (Customer Visit)","技術支援諮詢 (Technical Support)","塗層性能演示 (Coating Performance Demo)","應用建議 (Application Consultation)","報價需求 (Quotation Request)","合作洽談 (Partnership Discussion)"],
+  contact:["電話聯繫","Email","LINE (若勾選此項請留下您的Line ID)","安排面訪","暫不需要聯繫,僅索取資料"]
+};
+const MULTI = {nature:false, region:false, apps:true, lines:true, needs:true, contact:true};
+const HAS_OTHER = {nature:true, apps:true, needs:true};
+/* 選型應用 → 表單「應用類別」 */
+const APP_TO_FORM = {
+  arch:"外牆塗料 (Exterior Wall Coating)", wood:"木器塗料 (Wood Coating)", bake:"通用工業塗料 (General Industrial)",
+  protect:"抗污/防刮塗料 (Anti-Stain/Scratch-Resistant)", plasticpaint:"通用工業塗料 (General Industrial)",
+  thermal:"隔熱材料 (Thermal Insulation)", ink:"油墨 (Ink)", inkjet:"噴墨塗料 (Inkjet)",
+  build:"輕質混凝土/砂漿 (Lightweight Concrete/Mortar)", comp:"輕質複合材料 (Lightweight Composites)",
+  coil:"卷材塗料 (Coil Coating)", surface:"抗污/防刮塗料 (Anti-Stain/Scratch-Resistant)", hard:"抗污/防刮塗料 (Anti-Stain/Scratch-Resistant)",
+  anticor:"通用工業塗料 (General Industrial)", water:"外牆塗料 (Exterior Wall Coating)"
+};
+
+/* ===================== 工具 ===================== */
+const $ = s => document.querySelector(s);
+const el = (tag, attrs={}, ...kids) => { const n=document.createElement(tag); for(const [k,v] of Object.entries(attrs)){ if(k==="class") n.className=v; else if(k==="text") n.textContent=v; else n.setAttribute(k,v);} kids.forEach(k=>n.append(k)); return n; };
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true,2200); }
+function store(k,v){ try{ v===undefined ? localStorage.removeItem(k) : localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+function load(k){ try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ return null; } }
+
+$("#expoName").textContent = CONFIG.expoName;
+
+/* ===================== 路由 ===================== */
+const VIEWS = ["home","products","select","lab","contact","done"];
+function route(){
+  let v = (location.hash||"#home").slice(1);
+  if(!VIEWS.includes(v)) v="home";
+  if(v==="done" && !lastResult) v="home";
+  VIEWS.forEach(x=>$("#v-"+x).hidden = x!==v);
+  $("#backBtn").hidden = v==="home";
+  const fab=$("#fabLine"); if(fab) fab.hidden = (v==="contact"||v==="done");
+  $("#expoLabel").hidden = v!=="home" && window.innerWidth<380;
+  window.scrollTo(0,0);
+}
+$("#backBtn").onclick = ()=>{ location.hash="#home"; };
+window.addEventListener("hashchange", route);
+
+/* ===================== 產品示意動畫（SVG） ===================== */
+const VIS = {
+  // HyperDurays：上＝奈米尺度細毛結構讓水珠站立滾落；下＝微米尺度平滑緻密膜，髒污無法附著
+  droplet:`<svg class="pvis" viewBox="0 0 320 200" aria-hidden="true">
+    <defs><radialGradient id="gdrop" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#cdeaff"/><stop offset="1" stop-color="#5fb3f2"/></radialGradient></defs>
+    <text x="14" y="20" fill="#fff" font-size="12" font-weight="700">疏水｜奈米尺度</text>
+    <text x="306" y="20" fill="#bfe6ff" font-size="11" text-anchor="end">接觸角最高 125°</text>
+    <rect x="14" y="88" width="292" height="5" rx="2" fill="#e8f2fb"/>
+    <g stroke="#9fd4ff" stroke-width="1.4">${Array.from({length:59},(_,i)=>`<line x1="${17+i*5}" y1="88" x2="${17+i*5}" y2="66"/>`).join("")}</g>
+    <ellipse cx="70" cy="54" rx="20" ry="13" fill="url(#gdrop)" style="animation:drop 5s ease-out infinite"/>
+    <ellipse cx="150" cy="56" rx="15" ry="10" fill="url(#gdrop)" style="animation:drop 5s .6s ease-out infinite"/>
+    <ellipse cx="225" cy="54" rx="18" ry="12" fill="url(#gdrop)" style="animation:slideoff 5s 1.2s ease-in infinite"/>
+    <line x1="14" y1="108" x2="306" y2="108" stroke="#fff" stroke-opacity=".25"/>
+    <text x="14" y="128" fill="#fff" font-size="12" font-weight="700">防污｜微米尺度</text>
+    <text x="306" y="128" fill="#bfe6ff" font-size="11" text-anchor="end">平滑緻密，髒污無法附著</text>
+    <rect x="14" y="176" width="292" height="7" fill="#0bd4b0"/><rect x="14" y="183" width="292" height="9" fill="#5d7690"/>
+    ${[60,120,180,240].map((x,i)=>`<circle cx="${x}" cy="168" r="7" fill="#e7c58a" style="animation:dirt 3.2s ${i*.5}s ease-in infinite"/>`).join("")}
+    <text x="300" y="173" fill="#e6fffa" font-size="10" text-anchor="end">1–10 µm</text>
+  </svg>`,
+  // Duravance：Si–N 主鏈（側鏈氟改質）＋ 小磚結構（交聯度高）
+  network:`<svg class="pvis" viewBox="0 0 320 200" aria-hidden="true">
+    <text x="14" y="20" fill="#fff" font-size="12" font-weight="700">聚矽氮烷 –[Si–N]ₙ–｜側鏈氟改質</text>
+    <clipPath id="chainclip"><rect x="0" y="28" width="320" height="70"/></clipPath>
+    <g clip-path="url(#chainclip)"><g style="animation:chain 6s linear infinite">
+      ${Array.from({length:11},(_,i)=>{const x=10+i*48;return `<line x1="${x}" y1="62" x2="${x+48}" y2="62" stroke="#cfe8ff" stroke-width="2.5"/>
+      <line x1="${x}" y1="62" x2="${x}" y2="40" stroke="#cfe8ff" stroke-width="2"/><line x1="${x}" y1="62" x2="${x}" y2="84" stroke="#cfe8ff" stroke-width="2"/>
+      <circle cx="${x}" cy="62" r="10" fill="#0bd4b0"/><text x="${x}" y="66" text-anchor="middle" font-size="9" font-weight="700" fill="#0d3f7c">Si</text>
+      <circle cx="${x+24}" cy="62" r="9" fill="#fff"/><text x="${x+24}" y="66" text-anchor="middle" font-size="9" font-weight="700" fill="#0d3f7c">N</text>
+      <circle cx="${x}" cy="38" r="7" fill="${i%3===1?"#ffd36b":"#8fc7f5"}" ${i%3===1?`style="transform-origin:${x}px 38px;animation:pulse 1.8s ease-in-out infinite"`:""}/><text x="${x}" y="41" text-anchor="middle" font-size="8" font-weight="700" fill="#0d3f7c">${i%3===1?"F":"R"}</text>
+      <circle cx="${x}" cy="86" r="7" fill="#8fc7f5"/><text x="${x}" y="89" text-anchor="middle" font-size="8" font-weight="700" fill="#0d3f7c">R</text>`}).join("")}
+    </g></g>
+    <line x1="14" y1="104" x2="306" y2="104" stroke="#fff" stroke-opacity=".25"/>
+    <text x="80" y="122" fill="#bfe6ff" font-size="11" text-anchor="middle">傳統：大磚</text>
+    <rect x="30" y="128" width="100" height="56" fill="none" stroke="#fff" stroke-opacity=".6"/>
+    ${[0,1,2].map(r=>[0,1,2,3].map(c=>`<rect x="${34+c*24}" y="${132+r*17}" width="21" height="14" fill="none" stroke="#8fb7dc" stroke-width="1.5"/>`).join("")).join("")}
+    <text x="236" y="122" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">RCI：小磚</text>
+    <rect x="176" y="128" width="120" height="56" fill="none" stroke="#fff"/>
+    ${Array.from({length:6},(_,r)=>Array.from({length:12},(_,c)=>`<rect x="${179+c*9.6}" y="${131+r*8.6}" width="8" height="7" fill="#0bd4b0" style="animation:brick 4s ${((r*12+c)*0.025).toFixed(3)}s ease-out infinite"/>`).join("")).join("")}
+    <text x="160" y="196" fill="#e6fffa" font-size="10" text-anchor="middle">分子量更小、交聯度更高 → 柔韌性與附著力更佳</text>
+  </svg>`,
+  // T-RayX：水性分散 → 水分蒸發粒子堆疊 → 自交聯成膜（免成膜助劑）
+  coreshell:`<svg class="pvis" viewBox="0 0 320 200" aria-hidden="true">
+    <text x="14" y="20" fill="#fff" font-size="12" font-weight="700">矽基水性樹脂｜自交聯成膜</text>
+    <rect x="20" y="40" width="280" height="130" rx="6" fill="rgba(255,255,255,.08)" stroke="#fff" stroke-opacity=".4"/>
+    <rect x="21" y="41" width="278" height="128" fill="#73c7ff" opacity=".45" style="transform-origin:160px 169px;animation:evap 7s ease-in-out infinite"/>
+    ${[[50,70,30,86],[105,95,64,86],[160,62,98,86],[215,104,132,86],[265,76,166,86],[80,130,200,86],[190,140,234,86],[240,128,268,86]].map(([x,y,tx],i)=>`<g style="--dx:${tx-x}px;--dy:${148-y}px;animation:pack 7s ease-in-out infinite"><circle cx="${x}" cy="${y}" r="14" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.5"/><circle cx="${x}" cy="${y}" r="7" fill="#0bd4b0"/></g>`).join("")}
+    <g style="animation:filmin 7s ease-in-out infinite"><rect x="21" y="136" width="278" height="26" fill="#0bd4b0" opacity=".9"/>
+    <path d="M30 149 H290" stroke="#0d3f7c" stroke-width="1.5" stroke-dasharray="6 4"/>${Array.from({length:12},(_,i)=>`<line x1="${36+i*22}" y1="140" x2="${46+i*22}" y2="158" stroke="#0d3f7c" stroke-width="1.3"/>`).join("")}</g>
+    <rect x="21" y="162" width="278" height="7" fill="#5d7690"/>
+    <g font-size="10.5" fill="#fff" text-anchor="middle">
+      <text x="160" y="190" style="animation:cap1 7s infinite">① 粒子分散於水中（環保水性配方）</text>
+      <text x="160" y="190" style="animation:cap2 7s infinite">② 水分蒸發，粒子緊密堆疊</text>
+      <text x="160" y="190" style="animation:cap3 7s infinite">③ 自交聯成連續膜，不需成膜助劑</text>
+    </g>
+  </svg>`,
+  // HydroRayX：底漆滲入水泥大孔隙／石材小孔隙 → 可剝式暫時保護膜
+  layers:`<svg class="pvis" viewBox="0 0 320 200" aria-hidden="true">
+    <text x="14" y="20" fill="#fff" font-size="12" font-weight="700">自交聯丙烯酸｜水性多功能塗料</text>
+    <text x="86" y="44" fill="#bfe6ff" font-size="11" text-anchor="middle">水泥（大孔隙）</text>
+    <text x="234" y="44" fill="#bfe6ff" font-size="11" text-anchor="middle">花崗岩／大理石（小孔隙）</text>
+    <rect x="16" y="96" width="140" height="70" fill="#a9b4bf"/><rect x="164" y="96" width="140" height="70" fill="#c9cfd6"/>
+    ${[[30,96,16,40],[62,96,12,28],[92,96,18,46],[126,96,12,32]].map(([x,y,w,h])=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#5d6873"/><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#0bd4b0" style="transform-origin:${x}px ${y}px;animation:poreFill 8s ease-in-out infinite"/>`).join("")}
+    ${Array.from({length:10},(_,i)=>`<rect x="${172+i*13}" y="96" width="4" height="${10+(i%3)*5}" fill="#7c8792"/><rect x="${172+i*13}" y="96" width="4" height="${10+(i%3)*5}" fill="#0bd4b0" style="transform-origin:${172+i*13}px 96px;animation:poreFill 8s ease-in-out infinite"/>`).join("")}
+    <rect x="16" y="90" width="288" height="6" fill="#0bd4b0" style="transform-origin:16px 93px;animation:primer 8s ease-in-out infinite"/>
+    <g style="transform-origin:304px 84px;animation:peelfilm 8s ease-in-out infinite"><rect x="16" y="80" width="288" height="9" rx="2" fill="#fff" opacity=".92"/></g>
+    <g font-size="10.5" fill="#fff" text-anchor="middle">
+      <text x="160" y="188" style="animation:cap1 8s infinite">① 底漆滲入孔隙，提升附著（塑膠底漆另可增加印刷性）</text>
+      <text x="160" y="188" style="animation:cap2 8s infinite">② 覆上暫時性防護漆：抗刮</text>
+      <text x="160" y="188" style="animation:cap3 8s infinite">③ 施工完成後可整片剝除、可回黏</text>
+    </g>
+  </svg>`,
+  // RaySitive：針對有機樹脂體系的添加劑，少量加入塗料／油墨／膠黏劑
+  disperse:`<svg class="pvis" viewBox="0 0 320 200" aria-hidden="true">
+    <text x="14" y="20" fill="#fff" font-size="12" font-weight="700">有機樹脂體系添加劑｜對標國際大廠規格</text>
+    <g style="animation:dropper 6s ease-in-out infinite"><rect x="-6" y="34" width="12" height="26" rx="3" fill="#fff"/><path d="M-4 60 L0 70 L4 60Z" fill="#fff"/><circle cx="0" cy="74" r="4" fill="#ffd36b" style="animation:dripdot 2s ease-in infinite"/></g>
+    ${[["塗料",70],["油墨",160],["膠黏劑",250]].map(([t,x],i)=>`<path d="M${x-30} 100 V160 Q${x-30} 170 ${x-20} 170 H${x+20} Q${x+30} 170 ${x+30} 160 V100" fill="rgba(255,255,255,.1)" stroke="#fff" stroke-width="2"/>
+      <rect x="${x-28}" y="124" width="56" height="44" rx="6" fill="#73c7ff" opacity=".45"/>
+      <circle cx="${x}" cy="124" r="4" fill="none" stroke="#ffd36b" stroke-width="2" style="transform-origin:${x}px 124px;animation:ripple 6s ${i*2}s ease-out infinite"/>
+      <rect x="${x+36}" y="110" width="7" height="58" rx="3" fill="rgba(255,255,255,.2)"/><rect x="${x+36}" y="110" width="7" height="58" rx="3" fill="#0bd4b0" style="transform-origin:${x+39}px 168px;animation:gauge 6s ${i*2}s ease-out infinite"/>
+      <text x="${x}" y="190" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">${t}</text>`).join("")}
+  </svg>`,
+  // 珠光
+  pearl:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
+    <defs><linearGradient id="gpearl" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#e9dcc4"/><stop offset=".25" stop-color="#fdf6ea"/><stop offset=".45" stop-color="#cfe6ff"/><stop offset=".65" stop-color="#ead8f6"/><stop offset=".85" stop-color="#d6f5ec"/><stop offset="1" stop-color="#e9dcc4"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="-1 0;0 0;-1 0" dur="6s" repeatCount="indefinite"/></linearGradient>
+      <linearGradient id="gglint" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+    <rect x="40" y="22" width="240" height="76" rx="14" fill="url(#gpearl)" stroke="#fff" stroke-width="2"/>
+    <rect x="40" y="22" width="60" height="76" fill="url(#gglint)" style="animation:shine 3.5s ease-in-out infinite"/>
+    ${[[90,46],[170,72],[240,40]].map(([x,y],i)=>`<path d="M${x} ${y-6} L${x+1.5} ${y-1.5} L${x+6} ${y} L${x+1.5} ${y+1.5} L${x} ${y+6} L${x-1.5} ${y+1.5} L${x-6} ${y} L${x-1.5} ${y-1.5}Z" fill="#fff" style="transform-origin:${x}px ${y}px;animation:sparkle 2.4s ${i*.7}s ease-in-out infinite"/>`).join("")}
+  </svg>`,
+  // 色彩色票
+  stir:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
+    <path d="M128 26 V94 Q128 108 142 108 H178 Q192 108 192 94 V26" fill="rgba(255,255,255,.6)" stroke="#7aa6cc" stroke-width="2.5"/>
+    <path d="M124 26 H196" stroke="#7aa6cc" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="131" y="58" width="58" height="47" rx="8" fill="#9fd0f5"/>
+    <ellipse cx="160" cy="60" rx="27" ry="4" fill="#cfe8fb"/>
+    <ellipse cx="160" cy="78" rx="20" ry="6" fill="none" stroke="#2f7bd8" stroke-width="1.6" stroke-dasharray="7 6" style="animation:swirl 1.2s linear infinite"/><ellipse cx="160" cy="92" rx="13" ry="4" fill="none" stroke="#2f7bd8" stroke-opacity=".6" stroke-width="1.4" stroke-dasharray="5 5" style="animation:swirl 1s linear infinite"/>
+    <g style="transform-origin:160px 18px;animation:stirrod 1.6s ease-in-out infinite"><line x1="160" y1="10" x2="160" y2="96" stroke="#5d7690" stroke-width="3.5" stroke-linecap="round"/></g>
+  </svg>`,
+  swatch:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
+    ${["#d9473b","#f2a33a","#f5d547","#3fae6a","#2f7bd8","#7b4fc9"].map((c,i)=>`<g style="transform-origin:${40+i*48}px 60px;animation:pulse 3s ${i*.2}s ease-in-out infinite"><circle cx="${40+i*48}" cy="60" r="20" fill="${c}"/></g>`).join("")}
+  </svg>`,
+  iron:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
+    ${["#9b2f1f","#c8742a","#d9a441","#3a3330","#7a4a2c","#4f6b45"].map((c,i)=>`<g style="transform-origin:${40+i*48}px 60px;animation:pulse 3s ${i*.2}s ease-in-out infinite"><rect x="${22+i*48}" y="42" width="36" height="36" rx="8" fill="${c}"/></g>`).join("")}
+  </svg>`,
+  fluor:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true" style="background:#18233a">
+    ${["#39ff88","#ff4fd8","#ffe14a","#4af2ff"].map((c,i)=>`<circle cx="${60+i*66}" cy="60" r="18" fill="${c}" style="filter:drop-shadow(0 0 10px ${c});transform-origin:${60+i*66}px 60px;animation:pulse 2.2s ${i*.3}s ease-in-out infinite"/>`).join("")}
+  </svg>`,
+  dye:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
+    <rect x="30" y="70" width="260" height="30" rx="6" fill="#c9d3dd" style="animation:sweep 6s ease-in-out infinite alternate"/>
+    ${[0,1,2].map(i=>`<circle cx="${110+i*50}" cy="30" r="6" fill="#b5651d" style="animation:drop 2.4s ${i*.4}s ease-in infinite"/>`).join("")}
+  </svg>`,
+  bubble:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
+    <rect x="0" y="80" width="320" height="40" fill="#73c7ff" opacity=".35"/>
+    ${Array.from({length:8},(_,i)=>`<circle cx="${30+i*38}" cy="104" r="${5+i%3*2}" fill="none" stroke="#2f7bd8" stroke-width="2" style="animation:bubble ${2.6+i%3*.5}s ${i*.3}s ease-in infinite"/>`).join("")}
+  </svg>`,
+  film:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
+    <rect x="20" y="78" width="280" height="24" rx="4" fill="#b8c3cf"/>
+    <rect x="20" y="66" width="280" height="12" rx="3" fill="#2f7bd8" opacity=".75" style="animation:layer 3.6s ease-out infinite alternate"/>
+    <rect x="0" y="60" width="60" height="44" fill="#fff" opacity=".35" style="animation:shine 3.6s ease-in-out infinite"/>
+  </svg>`,
+  porous:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
+    ${[[60,60,26],[140,50,20],[210,66,28],[275,44,16]].map(([x,y,r],i)=>`<g style="animation:floaty ${5+i}s ${i*.4}s ease-in-out infinite"><circle cx="${x}" cy="${y}" r="${r}" fill="#fff" stroke="#9cc3ea" stroke-width="2"/>${[[-.4,-.3],[.3,-.2],[0,.35],[-.25,.25],[.4,.3]].map(([a,b])=>`<circle cx="${x+a*r}" cy="${y+b*r}" r="${r*.16}" fill="#d6e8fa"/>`).join("")}</g>`).join("")}
+  </svg>`,
+  diamond:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
+    <path d="M140 40 L160 24 L180 40 L160 88Z" fill="#c9e4ff" stroke="#2f7bd8" stroke-width="2"/><path d="M140 40 H180 M160 24 L152 40 L160 88 L168 40Z" stroke="#2f7bd8" stroke-width="1.5" fill="none"/>
+    ${[[110,36],[214,46],[196,92],[122,90]].map(([x,y],i)=>`<path d="M${x} ${y-8} L${x+2} ${y-2} L${x+8} ${y} L${x+2} ${y+2} L${x} ${y+8} L${x-2} ${y+2} L${x-8} ${y} L${x-2} ${y-2}Z" fill="#0bd4b0" style="transform-origin:${x}px ${y}px;animation:sparkle 2s ${i*.45}s ease-in-out infinite"/>`).join("")}
+  </svg>`,
+  carbon:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
+    ${Array.from({length:7},(_,i)=>`<polygon points="${(()=>{const cx=50+i*38,cy=60+(i%2?14:-14),r=14;return Array.from({length:6},(_,k)=>[cx+r*Math.cos(k*Math.PI/3),cy+r*Math.sin(k*Math.PI/3)].join(",")).join(" ")})()}" fill="#2a2f36" stroke="#73c7ff" stroke-width="1.5" style="animation:pulse 3s ${i*.2}s ease-in-out infinite;transform-origin:${50+i*38}px ${60+(i%2?14:-14)}px"/>`).join("")}
+  </svg>`,
+anodize:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
+    <rect x="70" y="40" width="180" height="72" rx="6" fill="#73c7ff" opacity=".35" stroke="#7aa6cc"/>
+    <line x1="60" y1="16" x2="260" y2="16" stroke="#5d7690" stroke-width="3"/>
+    <line x1="120" y1="16" x2="120" y2="44" stroke="#5d7690" stroke-width="2"/><line x1="210" y1="16" x2="210" y2="50" stroke="#5d7690" stroke-width="2"/>
+    <text x="104" y="12" font-size="11" font-weight="700" fill="#d9473b">＋</text><text x="214" y="12" font-size="11" font-weight="700" fill="#2f7bd8">－</text>
+    <rect x="104" y="44" width="32" height="58" rx="3" fill="#c9d3dd" stroke="#8a99a8"/>
+    <rect x="101" y="44" width="38" height="58" rx="4" fill="#d8b25a" opacity="0" style="animation:oxide 6s ease-in-out infinite"/>
+    <rect x="205" y="50" width="10" height="52" fill="#7c8792"/>
+    ${[0,1,2,3,4].map(i=>`<circle cx="${210+(i%2?3:-3)}" cy="100" r="2.5" fill="none" stroke="#fff" stroke-width="1.2" style="animation:bubble ${2+i*.3}s ${i*.4}s ease-in infinite"/>`).join("")}
+    ${[0,1,2].map(i=>`<circle cx="${112+i*8}" cy="100" r="2" fill="none" stroke="#fff" stroke-width="1" style="animation:bubble ${2.4+i*.3}s ${i*.5+.2}s ease-in infinite"/>`).join("")}
+    <text x="160" y="118" font-size="9.5" fill="#5d7690" text-anchor="middle">鋁件（陽極）在電解槽中生成氧化膜並著色</text>
+  </svg>`
+};
+const VIS_OF = {hyperdurays:"droplet",duravance:"network",trayx:"coreshell",hydrorayx:"layers",raysitive:"disperse",
+  susonity:"pearl",sudarshan:"swatch",aralon:"fluor",huayuan:"iron",modern:"dye",
+  clariant:"film",siliconi:"bubble",borregaard:"porous",durazane:"stir",mitsui:"stir",nanox:"stir",
+  carbodeon:"diamond",swchem:"diamond",um:"carbon",quartzene:"porous",aeropor:"porous",anpoly:"porous",csrc:"carbon",alufinish:"anodize"};
+let visSeq=0;
+function visual(p){
+  // 每次插入時把 id 改成唯一，避免多個 SVG 共用 defs 衝突
+  const n=++visSeq; const html=VIS[VIS_OF[p.id]||"film"].replace(/id="(\w+)"/g,`id="$1_${n}"`).replace(/url\(#(\w+)\)/g,`url(#$1_${n})`);
+  const t=document.createElement("template"); t.innerHTML=html.trim(); return t.content.firstChild;
+}
+
+/* ===================== 首頁品牌連結 ===================== */
+const CAT_SHORT={pig:"顏料／色料",add:"添加劑",resin:"樹脂",filler:"功能填料",surface:"表面處理"};
+const OWN_SHORT={hyperdurays:"鍍膜塗料",duravance:"樹脂與添加劑",trayx:"水性樹脂",hydrorayx:"水性塗料",raysitive:"添加劑"};
+const CAT_COLOR={own:"#116dcf",pig:"#d9573b",add:"#0b9ef7",resin:"#6b5bd6",filler:"#0bb594",surface:"#8a6a3c"};
+function brandLinks(){
+  const own=$("#ownBrands"), ag=$("#agentBrands");
+  PRODUCTS.forEach(p=>{
+    const a=el("a",{class:"bbtn"+(p.own?" own":""),href:p.url,target:"_blank",rel:"noopener"});
+    a.style.setProperty("--c",CAT_COLOR[p.cat]);
+    const nm=p.name.replace(/®|™/g,"");
+    const txt=el("span",{class:"txt"}); txt.append(el("b",{text:p.name}), el("small",{text:p.own?OWN_SHORT[p.id]:CAT_SHORT[p.cat]}));
+    a.append(el("span",{class:"dot","aria-hidden":"true",text:nm.trim().charAt(0).toUpperCase()}), txt, el("span",{class:"go","aria-hidden":"true",text:"↗"}));
+    const li=el("li"); li.append(a); (p.own?own:ag).append(li);
+  });
+}
+
+/* ===================== 產品介紹 ===================== */
+const catLabel = id => CATS.find(c=>c.id===id).label;
+function productCard(p, opt={}){
+  const c = el("article",{class:"pcard anim"+(p.own?" ownc":"")});
+  if(opt.i!==undefined) c.style.setProperty("--i",opt.i);
+  const box = p.own ? el("div",{class:"inner"}) : c;
+  if(p.own) c.append(box);
+  box.append(visual(p));
+  box.append(el("div",{class:"meta"}, el("span",{class:"tag"+(p.own?" own":""),text:p.own?"RCI 自有品牌":"代理品牌"}), ...(p.own?[el("span",{class:"tag madeby",text:"MADE BY RCI"})]:[el("span",{class:"tag",text:catLabel(p.cat)})])));
+  box.append(el("h3",{text:p.name}), el("div",{class:"brand",text:p.tag}));
+  if(opt.why) box.append(el("div",{class:"why",text:"✓ 符合："+opt.why}));
+  if(p.desc) box.append(el("p",{text:p.desc,style:"font-size:14px"}));
+  const rows = opt.rows ? opt.rows.map(i=>p.series[i]) : p.series;
+  const ul = el("ul",{class:"series"});
+  rows.forEach(([n,d])=>{ const li=el("li"); li.append(el("b",{text:n}), document.createTextNode("｜"+d)); ul.append(li); });
+  box.append(ul);
+  box.append(el("a",{class:"more",href:p.url,target:"_blank",rel:"noopener",text:"官網介紹 ›"}));
+  return c;
+}
+let prodCat = "all";
+function renderProducts(){
+  const f=$("#prodFilter"); f.innerHTML="";
+  [{id:"all",label:"全部"},...CATS].forEach(c=>{ const b=el("button",{class:"chip",type:"button","aria-pressed":String(c.id===prodCat),text:c.label}); b.onclick=()=>{prodCat=c.id;renderProducts();}; f.append(b); });
+  const list=$("#prodList"); list.innerHTML="";
+  CATS.forEach(c=>{
+    if(prodCat!=="all" && prodCat!==c.id) return;
+    const items=PRODUCTS.filter(p=>p.cat===c.id); if(!items.length) return;
+    if(c.id==="own") list.append(ownHead());
+    else if(prodCat==="all") list.append(el("div",{class:"grouphead",text:c.label}));
+    items.forEach((p,i)=>list.append(productCard(p,{i})));
+    if(c.id==="pig") list.append(moreBrands());
+  });
+}
+
+function ownHead(){
+  const h=el("div",{class:"ownhead anim"});
+  h.innerHTML=`<div class="eyebrow">RCI Original · 台灣研發</div><h3>RCI 自有品牌</h3><p>專注矽基預陶瓷（Pre-ceramic）材料：開發新的化學結構，而非單純混合。Thinner is Better, Less is More。</p><div class="stats"><div><b>600+</b><span>活躍客戶</span></div><div><b>1–10 µm</b><span>超薄塗層</span></div></div>`;
+  return h;
+}
+function showcase(){
+  const box=$("#showcase");
+  PRODUCTS.filter(p=>p.own).forEach(p=>{ const a=el("a",{class:"sc",href:"#products"}); a.append(visual(p)); const d=el("div"); d.append(el("b",{text:p.name}),el("span",{text:p.tag})); a.append(d); box.append(a); });
+}
+function moreBrands(){
+  const c=el("a",{class:"pcard morebrands",href:"#contact"});
+  c.append(el("b",{text:"更多品牌推薦，請洽業務"}), el("span",{text:"顏料／色料還有更多品牌與系列，留下資料由業務為您介紹 ›"}));
+  return c;
+}
+/* ===================== 產品選型 ===================== */
+const sel = { mode:null, app:null, opt:null, uses:new Set() };
+let recommended = [];
+document.querySelectorAll(".mode").forEach(b=>b.onclick=()=>{ sel.mode = b.dataset.mode; renderSelector(); });
+function chip(label, on, fn){ const b=el("button",{class:"chip",type:"button","aria-pressed":String(!!on),text:label}); b.onclick=fn; return b; }
+const byId = id => PRODUCTS.find(p=>p.id===id);
+
+function renderSelector(){
+  document.querySelectorAll(".mode").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.mode===sel.mode)));
+  $("#rawSteps").hidden = sel.mode!=="raw";
+  $("#coatSteps").hidden = sel.mode!=="coat";
+
+  // 找原料：Step 2 產業
+  const ra=$("#rawApp"); ra.innerHTML="";
+  APP_TREE.forEach(t=>ra.append(chip(t.label, sel.app===t.id, ()=>{ sel.app = sel.app===t.id?null:t.id; sel.opt=null; renderSelector(); })));
+  // Step 3 該產業的原料
+  const top = APP_TREE.find(t=>t.id===sel.app);
+  $("#rawOptStep").hidden = !top;
+  const ro=$("#rawOpt"); ro.innerHTML="";
+  if(top) top.opts.forEach(o=>ro.append(chip(o[1], sel.opt===o[0], ()=>{ sel.opt = sel.opt===o[0]?null:o[0]; renderSelector(); })));
+
+  // 找塗料
+  const cu=$("#coatUse"); cu.innerHTML="";
+  COAT_USES.forEach(u=>cu.append(chip(u.label, sel.uses.has(u.id), ()=>{ sel.uses.has(u.id)?sel.uses.delete(u.id):sel.uses.add(u.id); renderSelector(); })));
+
+  // 結果
+  const res=$("#selResult"); res.innerHTML=""; recommended=[];
+  let show=false;
+  if(sel.mode==="raw" && top && sel.opt){
+    show=true;
+    const o = top.opts.find(x=>x[0]===sel.opt);
+    o[2].forEach(([pid,rows])=>{ const p=byId(pid); recommended.push(p); res.append(productCard(p,{why: top.label+"｜"+o[1], rows: rows||undefined, i:res.children.length})); });
+    if(recommended.some(p=>p.cat==="pig")) res.append(moreBrands());
+  }
+  if(sel.mode==="raw" && top && !sel.opt){
+    res.append(el("p",{class:"lead",text:"請在 Step 3 選擇需要的原料類別。"}));
+  }
+  if(sel.mode==="coat" && sel.uses.size){
+    show=true;
+    const hits = PRODUCTS.filter(p=>p.coat).map(p=>{
+      const ids=[...sel.uses].filter(u=>u in p.coat);
+      return {p, ids, rows:[...new Set(ids.map(u=>p.coat[u]))]};
+    }).filter(x=>x.ids.length).sort((a,b)=>b.ids.length-a.ids.length);
+    recommended = hits.map(x=>x.p);
+    hits.forEach((x,i)=>res.append(productCard(x.p,{why:x.ids.map(u=>COAT_USES.find(c=>c.id===u).label).join("、"), rows:x.rows, i})));
+  }
+  $("#selResultWrap").hidden = !show;
+  $("#selToContact").textContent = recommended.length ? "索取這些產品的資料" : "留下資料，請業務聯繫我";
+}
+$("#selToContact").addEventListener("click", ()=>{
+  if(sel.mode==="raw"){
+    const top = APP_TREE.find(t=>t.id===sel.app); const o = top && top.opts.find(x=>x[0]===sel.opt);
+    const f = (o && o[3]) || (top && top.form);
+    if(f) setChecked("apps", f, true);
+  } else {
+    sel.uses.forEach(k=>{ if(APP_TO_FORM[k]) setChecked("apps", APP_TO_FORM[k], true); });
+  }
+  recommended.forEach(p=>{ if(p.line) setChecked("lines", p.line, true); });
+  if(recommended.length){
+    setChecked("needs", OPTS.needs[1], true); // 電子型錄
+    const other = $("#o-needs-other-text");
+    const txt = "選型推薦：" + recommended.slice(0,8).map(p=>p.name).join("、");
+    if(other){ other.value = txt; setChecked("needs","__other__",true); }
+  }
+});
+
+/* ===================== 表單建立 ===================== */
+function buildOpts(group){
+  const box = $("#o-"+group); const type = MULTI[group]?"checkbox":"radio";
+  OPTS[group].forEach((v,i)=>{
+    const id=`o-${group}-${i}`;
+    const lab = el("label",{class:"opt",for:id}, el("input",{type, id, name:group, value:v}), document.createTextNode(v));
+    box.append(lab);
+  });
+  if(HAS_OTHER[group]){
+    const id=`o-${group}-other`;
+    const lab = el("label",{class:"opt",for:id}, el("input",{type, id, name:group, value:"__other__"}), document.createTextNode("其他"));
+    const txt = el("input",{type:"text",id:`o-${group}-other-text`,class:"other-in",placeholder:"請說明","aria-label":"其他說明"});
+    txt.addEventListener("input",()=>{ if(txt.value) $("#"+id).checked=true; });
+    box.append(lab, txt);
+  }
+  box.addEventListener("change", ()=>{ box.closest(".field").classList.remove("bad"); updateLineField(); });
+}
+function setChecked(group, value, on){
+  document.querySelectorAll(`input[name="${group}"]`).forEach(i=>{ if(i.value===value) i.checked=on; });
+}
+function getChecked(group){ return [...document.querySelectorAll(`input[name="${group}"]:checked`)].map(i=>i.value); }
+function updateLineField(){
+  const wantLine = getChecked("contact").some(v=>v.startsWith("LINE"));
+  $("#lineUserField label").className = wantLine ? "req" : "";
+}
+Object.keys(OPTS).forEach(buildOpts);
+
+/* 兩張表單共用欄位互相帶入 */
+const SHARED = [["f-company","lab-company"],["f-title","lab-title"],["f-name","lab-name"],["f-phone","lab-phone"]];
+SHARED.forEach(([a,b])=>{
+  const A=$("#"+a), B=$("#"+b);
+  A.addEventListener("input",()=>{ if(!B.dataset.touched) B.value=A.value; });
+  B.addEventListener("input",()=>{ B.dataset.touched="1"; if(!A.value) A.value=B.value; });
+});
+
+/* ===================== 送出 ===================== */
+async function postGoogleForm(cfg, pairs){
+  const body = new URLSearchParams();
+  pairs.forEach(([k,v])=>body.append(k,v));
+  if(cfg.pages>1) body.append("pageHistory", [...Array(cfg.pages).keys()].join(","));
+  body.append("fvv","1");
+  // Google 表單不回傳 CORS 標頭，用 no-cors 送出（無法讀取回應，但資料會寫入）
+  await fetch(cfg.action, {method:"POST", mode:"no-cors", body});
+}
+function lineUrl(text){
+  const id = (CONFIG.lineId||"").trim(); if(!id) return null;
+  return "https://line.me/R/oaMessage/" + encodeURIComponent(id.startsWith("@")?id:"@"+id) + "/?" + encodeURIComponent(text);
+}
+
+let lastResult = null;
+function showDone(title, text, summary){
+  lastResult = summary;
+  $("#doneTitle").textContent = title;
+  $("#doneText").textContent = text;
+  $("#doneSummary").textContent = summary;
+  const url = lineUrl(summary);
+  $("#lineBtn").hidden = !url;
+  if(url) $("#lineBtn").href = url;
+  location.hash = "#done";
+}
+$("#lineBtn").addEventListener("click", ()=>{
+  // 點擊時先複製，到 LINE 後可直接貼上；預填訊息也會帶入聊天框
+  try{ navigator.clipboard.writeText(lastResult||"").then(()=>toast("已複製，開啟 LINE 後貼上即可"),()=>{}); }catch(e){}
+});
+$("#copyBtn").onclick = async ()=>{
+  try{ await navigator.clipboard.writeText(lastResult||""); toast("已複製"); }
+  catch(e){ const r=document.createRange(); r.selectNodeContents($("#doneSummary")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("已選取，請按複製"); }
+};
+
+function req(id){ const i=$("#"+id); const ok=i.value.trim()!==""; i.closest(".field").classList.toggle("bad",!ok); return ok; }
+function validEmail(id){ const i=$("#"+id); const ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(i.value.trim()); i.closest(".field").classList.toggle("bad",!ok); return ok; }
+function reqGroup(g){ const v=getChecked(g); let ok=v.length>0; if(v.includes("__other__") && !$(`#o-${g}-other-text`).value.trim()) ok=false; $("#o-"+g).closest(".field").classList.toggle("bad",!ok); return ok; }
+
+/* 色彩實驗室報名 */
+$("#labForm").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const ids=["lab-company","lab-title","lab-name","lab-phone"];
+  const ok = ids.map(req).every(Boolean);
+  if(!ok){ toast("請填寫所有欄位"); document.querySelector("#labForm .bad input")?.focus(); return; }
+  const v = Object.fromEntries(ids.map(i=>[i.slice(4), $("#"+i).value.trim()]));
+  const summary = `【色彩實驗室報名】${CONFIG.expoName}\n公司：${v.company}\n職位：${v.title}\n姓名：${v.name}\n電話：${v.phone}`;
+  const btn=$("#labSubmit"); btn.disabled=true; btn.textContent="送出中…";
+  let saved=false;
+  try{
+    if(CONFIG.labForm.action){
+      const E=CONFIG.labForm.entries;
+      await postGoogleForm(CONFIG.labForm, [[E.company,v.company],[E.title,v.title],[E.name,v.name],[E.phone,v.phone]]);
+      saved=true;
+    }
+  }catch(err){ /* 網路失敗：改由 LINE 傳送 */ }
+  btn.disabled=false; btn.textContent="送出報名";
+  showDone(saved?"報名成功！":"請完成最後一步",
+    saved ? "工作人員會依序為您安排。也歡迎加入 RCI 官方 LINE，活動通知會在 LINE 上告訴您。"
+          : "請按下方按鈕，把報名資料傳到 RCI 官方 LINE，即完成報名。",
+    summary);
+  store("rci_lab_done", true);
+});
+
+/* 客戶資料表 */
+$("#leadForm").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const checks = [
+    req("f-name"), req("f-company"), req("f-title"), req("f-phone"), validEmail("f-email"),
+    reqGroup("nature"), reqGroup("region"), reqGroup("apps"), reqGroup("lines"), reqGroup("needs"), reqGroup("contact")
+  ];
+  const wantLine = getChecked("contact").some(v=>v.startsWith("LINE"));
+  if(wantLine) checks.push(req("f-lineuser"));
+  const errBox=$("#leadErr");
+  if(!checks.every(Boolean)){
+    errBox.textContent="還有必填欄位沒填，請檢查標示紅框的項目。"; errBox.hidden=false;
+    const first=document.querySelector("#leadForm .bad"); first?.scrollIntoView({behavior:"smooth",block:"center"}); return;
+  }
+  errBox.hidden=true;
+  const E=CONFIG.leadForm.entries;
+  const val = id=>$("#"+id).value.trim();
+  const pairs = [[E.name,val("f-name")],[E.company,val("f-company")],[E.title,val("f-title")],[E.phone,val("f-phone")],[E.email,val("f-email")]];
+  const addGroup = (g,key)=>{ getChecked(g).forEach(v=>{ if(v==="__other__"){ pairs.push([key,"__other_option__"]); pairs.push([key+".other_option_response", $(`#o-${g}-other-text`).value.trim()]); } else pairs.push([key,v]); }); };
+  addGroup("nature",E.nature); addGroup("region",E.region); addGroup("apps",E.apps); addGroup("lines",E.lines); addGroup("contact",E.contact);
+  // 需求：備註併入「其他」（表單沒有備註欄）
+  const note = val("f-note");
+  const needs = getChecked("needs"); const otherTxt = [needs.includes("__other__") ? $("#o-needs-other-text").value.trim() : "", note ? "備註："+note : ""].filter(Boolean).join("；");
+  needs.filter(v=>v!=="__other__").forEach(v=>pairs.push([E.needs,v]));
+  if(otherTxt){ pairs.push([E.needs,"__other_option__"]); pairs.push([E.needs+".other_option_response", otherTxt]); }
+  if(val("f-lineuser")) pairs.push([E.lineUser,val("f-lineuser")]);
+
+  const show = g=>getChecked(g).map(v=>v==="__other__" ? "其他："+$(`#o-${g}-other-text`).value.trim() : v.replace(/\s*\(.*\)$/,"")).join("、");
+  const summary = `【${CONFIG.expoName}｜客戶資料】\n姓名：${val("f-name")}\n公司：${val("f-company")}\n職稱：${val("f-title")}\n電話：${val("f-phone")}\nEmail：${val("f-email")}\n公司性質：${show("nature")}\n區域：${show("region")}\n應用：${show("apps")}\n產品線：${show("lines")}\n需求：${show("needs")}\n聯繫方式：${show("contact")}` + (val("f-lineuser")?`\nLINE ID：${val("f-lineuser")}`:"") + (val("f-note")?`\n備註：${val("f-note")}`:"");
+
+  const btn=$("#leadSubmit"); btn.disabled=true; btn.textContent="送出中…";
+  let saved=false;
+  try{ await postGoogleForm(CONFIG.leadForm, pairs); saved=true; }catch(err){}
+  btn.disabled=false; btn.textContent="送出資料";
+  showDone(saved?"已收到您的資料":"網路不穩，請完成最後一步",
+    saved ? "最後一步：加入 RCI 官方 LINE，把資料傳給我們，即可獲取最新產品與活動資訊。"
+          : "資料可能沒有送出成功。請按下方按鈕傳到 RCI 官方 LINE，或複製資料交給現場人員。",
+    summary);
+});
+
+/* ===================== 啟動 ===================== */
+brandLinks();
+showcase();
+renderProducts();
+renderSelector();
+updateLineField();
+route();
+</script>
+</body>
+</html>
