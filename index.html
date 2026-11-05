@@ -282,6 +282,8 @@ textarea{width:100%;border:1px solid #c9d6e4;background:#fff;border-radius:10px;
 .values b{font-family:var(--f-latin);font-size:12px;line-height:1.25}
 .values span{font-size:11.5px;color:#cfe5ff}
 .subhead{font-size:12.5px;font-weight:700;color:var(--muted);margin-top:2px}
+.note-lab{font-size:13.5px;color:#7a5200;background:#fff6e0;border:1px solid #f1d9a6;border-radius:10px;padding:10px 12px}
+.linkbtn{align-self:center;background:none;border:0;color:var(--muted);font-size:13.5px;text-decoration:underline;cursor:pointer;padding:6px}
 .donenote{font-size:12.5px;color:var(--muted)}
 .pcard.focus{outline:3px solid var(--teal);outline-offset:3px;border-radius:18px}
 @keyframes nx1{0%,25%{transform:none;opacity:1}55%,100%{transform:translateY(52px);opacity:0}}
@@ -413,16 +415,24 @@ const CONFIG = {
       lines: "entry.486549515",
       needs: "entry.412240300",
       contact: "entry.246265359",
-      lineUser: "entry.1807813944"
+      lineUser: "entry.1807813944",
+      project: "entry.59644066",
+      projectNote: "entry.1044985112"
     }
   },
 
-  // 色彩實驗室報名表（另一份 Google 表單：公司名、職位、姓名、電話）。
-  // action 留空時，報名資料改走「複製＋傳到官方 LINE」。
+  // 色彩實驗室體驗申請（Color Lab 表單，5 個區段）
   labForm: {
-    action: "",
-    pages: 1,
-    entries: { company: "", title: "", name: "", phone: "" }
+    action: "https://docs.google.com/forms/d/e/1FAIpQLSe2ZfjatWXGUByQTeiq-27Dw7ZcqifeXT5hmzaqnYVo-zL_ew/formResponse",
+    pages: 5,
+    entries: {
+      name: "entry.1777565172", company: "entry.769078988", title: "entry.344185515", phone: "entry.1709662531",
+      email: "entry.1427592840", lineName: "entry.1712329204",
+      identity: "entry.1964809426", project: "entry.1539601749",
+      apps: "entry.1505936757", projectNote: "entry.1438490066",
+      dates: "entry.1375816951", times: "entry.479997785", accept: "entry.1115751424",
+      consent: "entry.29781828"
+    }
   }
 };
 </script>
@@ -492,7 +502,7 @@ const CONFIG = {
 
     <nav class="quick" aria-label="更多">
       <a href="#select"><b>產品選型</b><span>找原料、找塗料</span></a>
-      <a href="#lab"><b>色彩實驗室</b><span>現場報名</span></a>
+      <a href="#lab"><b>色彩實驗室</b><span>體驗申請</span></a>
       <a href="#products"><b>全部產品</b><span>品牌總覽</span></a>
     </nav>
   </section>
@@ -566,19 +576,45 @@ const CONFIG = {
   <section class="view" id="v-lab" hidden>
     <div class="lab-hero">
       <div class="eyebrow">Color Lab · On Site</div>
-      <h2>色彩實驗室 現場報名</h2>
-      <p>現場體驗珠光與特殊效果色彩，請留下資料，工作人員將為您安排。</p>
+      <h2>Color Lab 色彩實驗室｜體驗申請</h2>
+      <p>12/10–12/13 展期現場體驗珠光與特殊效果色彩。填寫申請後，工作人員會依場次安排，透過 LINE 通知您。</p>
       <div class="swatches" aria-hidden="true"><i style="background:#d9c08a"></i><i style="background:#9bc9e8"></i><i style="background:#c99bd1"></i><i style="background:#8fd6c4"></i><i style="background:#e7a37e"></i><i style="background:#b7bcc4"></i></div>
     </div>
     <form id="labForm" novalidate>
       <div class="section">
-        <div class="field"><label for="lab-company" class="req">公司名稱</label><input type="text" id="lab-company" autocomplete="organization" required></div>
-        <div class="field"><label for="lab-title" class="req">職位</label><input type="text" id="lab-title" autocomplete="organization-title" required></div>
+        <h3>基本資料</h3>
         <div class="field"><label for="lab-name" class="req">姓名</label><input type="text" id="lab-name" autocomplete="name" required></div>
-        <div class="field"><label for="lab-phone" class="req">電話</label><input type="tel" id="lab-phone" autocomplete="tel" inputmode="tel" required></div>
+        <div class="field"><label for="lab-company" class="req">公司名稱</label><input type="text" id="lab-company" autocomplete="organization" required></div>
+        <div class="field"><label for="lab-title" class="req">職位／職稱</label><input type="text" id="lab-title" autocomplete="organization-title" required></div>
+        <div class="field"><label for="lab-phone" class="req">聯絡電話</label><input type="tel" id="lab-phone" autocomplete="tel" inputmode="tel" required></div>
+        <div class="field"><label for="lab-email">電子郵件 <span class="hint">（選填）</span></label><input type="email" id="lab-email" autocomplete="email" inputmode="email"></div>
+        <div class="field"><label for="lab-linename">LINE 顯示名稱 <span class="hint">（選填，方便我們在官方 LINE 對應您的訊息）</span></label><input type="text" id="lab-linename" autocomplete="off"></div>
       </div>
-      <p class="privacy">本公司依個人資料保護法蒐集您的姓名、公司名稱與聯絡方式，僅用於本次活動安排與後續客戶服務。送出即表示您同意上述用途。</p>
-      <button class="btn primary" type="submit" id="labSubmit">送出報名</button>
+      <div class="section">
+        <h3>關於您</h3>
+        <div class="field" data-group="lident"><div class="q req">您的身分／公司性質</div><div class="opts" id="o-lident"></div></div>
+        <div class="field" data-group="lproj"><div class="q req">目前是否有實際專案／案場需求？</div><div class="opts" id="o-lproj"></div></div>
+      </div>
+      <div class="section">
+        <h3>體驗內容</h3>
+        <div class="field" data-group="lapps"><div class="q req">您最想在 Color Lab 了解哪些應用？<span class="hint">（可複選）</span></div><div class="opts" id="o-lapps"></div></div>
+        <div class="field"><label for="lab-note">若有實際專案／案場，請簡述應用、基材或需求 <span class="hint">（選填）</span></label><textarea id="lab-note" placeholder="例如：外牆石材防污、木材耐候、金屬防腐蝕、預計施工時間等。"></textarea></div>
+      </div>
+      <div class="section">
+        <h3>場次安排</h3>
+        <div class="field" data-group="ldates"><div class="q req">可參加日期<span class="hint">（可複選）</span></div><div class="opts grid2" id="o-ldates"></div></div>
+        <div class="field" data-group="ltimes"><div class="q req">偏好時段<span class="hint">（可複選）</span></div><div class="opts" id="o-ltimes"></div></div>
+        <div class="field" data-group="laccept"><div class="q req">若首選時段已滿，是否接受其他場次？</div><div class="opts" id="o-laccept"></div></div>
+      </div>
+      <div class="section">
+        <h3>個資告知與同意</h3>
+        <p class="privacy" style="margin:0">雷暘科技實業股份有限公司（以下稱本公司）為辦理 RCI Color Lab 色彩實驗室活動，將蒐集您於本表填寫之姓名、公司名稱、職稱、聯絡電話、電子郵件、LINE 顯示名稱及其他填答內容，用於活動場次安排、場次通知及後續客戶服務。<br><br>您可依個人資料保護法第 3 條規定，向本公司請求查詢或閱覽、製給複製本、補充或更正、停止蒐集處理利用或刪除您的個人資料，請洽 info@rayoungnet.com。<br><br>您可自由選擇是否提供資料；如未提供必填資料，本公司將無法為您安排體驗場次。</p>
+        <div class="field" data-group="lconsent"><div class="opts" id="o-lconsent"></div></div>
+      </div>
+      <p class="note-lab">送出後為「申請」，不代表預約完成。工作人員審核後，會透過 RCI 官方 LINE 一對一通知您的場次。</p>
+      <p class="err" id="labErr" hidden></p>
+      <button class="btn primary" type="submit" id="labSubmit">送出申請</button>
+      <button class="linkbtn" type="button" data-clear>清除我的資料</button>
     </form>
   </section>
 
@@ -606,6 +642,8 @@ const CONFIG = {
         <div class="field" data-group="apps"><div class="q req">您對以下哪些應用類別有興趣？<span class="hint">（可複選）</span></div><div class="opts" id="o-apps"></div></div>
         <div class="field" data-group="lines"><div class="q req">您對 RCI 以下哪些產品線有興趣？<span class="hint">（可複選）</span></div><div class="opts" id="o-lines"></div></div>
         <div class="field" data-group="needs"><div class="q req">您目前的需求項目<span class="hint">（可複選）</span></div><div class="opts" id="o-needs"></div></div>
+        <div class="field" data-group="proj"><div class="q">目前是否有實際專案／案場需求？<span class="hint">（選填）</span></div><div class="opts" id="o-proj"></div></div>
+        <div class="field"><label for="f-projnote">若有實際專案／案場，請簡述應用、基材或需求 <span class="hint">（選填）</span></label><textarea id="f-projnote" placeholder="例如：外牆石材防污、木材耐候、金屬防腐蝕、預計施工時間等。"></textarea></div>
       </div>
       <div class="section">
         <h3>聯繫方式偏好</h3>
@@ -616,6 +654,7 @@ const CONFIG = {
       <p class="privacy">📋 個人資料保護告知：本公司將依個人資料保護法蒐集您的個人資料（含姓名、公司名稱、聯絡方式等），用於客戶服務、產品資訊提供、業務聯繫及技術支援等用途。您可隨時聯繫我們（info@rayoungnet.com）要求查詢、更正或刪除您的資料。送出即表示您同意上述蒐集、處理及利用。</p>
       <p class="err" id="leadErr" hidden></p>
       <button class="btn primary" type="submit" id="leadSubmit">送出資料</button>
+      <button class="linkbtn" type="button" data-clear>清除我的資料</button>
     </form>
   </section>
 
@@ -805,18 +844,18 @@ const PRODUCTS = [
    desc:"全球珠光顏料領導品牌，工業塗料與個人護理應用。",
    series:[["Iriodin®","珠光顏料，珍珠效果"],["Pyrisma®","高飽和度光艷珠光"],["Xirallic®","晶鑽顏料，水晶效果"],["Colorstream®","幻彩，多色角度變化"],["Meoxal®","金砂顏料，金屬光澤"],["Miraval®","宙光顏料，多彩閃耀"],["Iriotec®","功能粉體：雷射標記、導電、紅外線反射"],["Ronastar®／Colorona®／Timiron®","個人護理用珠光"]],
    apps:["arch","bake","plasticpaint","ink","eng","cosm","foil","conduct"], url:SITE+"/news/12-susonity-cooprate-in-asia-1.html", line:"SUSONITY 珠光顏料"},
-  {id:"phomera", cat:"pig", name:"Phomera", tag:"特殊色彩與效果材料",
-   desc:"特殊色彩與效果應用，詳細規格請洽業務。",
-   series:[["Phomera","特殊色彩與效果材料（規格請洽業務）"]],
-   apps:[], url:SITE},
+  {id:"phomera", cat:"pig", name:"Phomera", tag:"琥珀效果顏料",
+   desc:"琥珀質感的特殊效果顏料，適用裝飾塗料與特殊色彩應用，詳細規格請洽業務。",
+   series:[["Phomera","琥珀效果顏料（規格請洽業務）"]],
+   apps:[], url:SITE, line:"Phomera 琥珀效果顏料"},
   {id:"sudarshan", cat:"pig", name:"Sudarshan", tag:"顏料／色漿／染料（合併 Heubach 與 Clariant Colorants）",
    desc:"有機與無機色料，用於塗料、油墨、塑膠、化妝品等。",
    series:[["Colanyl®／Colanyl Oxide®","水性無樹脂色漿，低／零 VOC"],["Hostaperm®／Novoperm®","高性能有機顏料"],["PV Fast®","塑膠、纖維用高耐性顏料"],["HEUCOPHOS®","活性防蝕磷酸鹽顏料"],["HEUCODUR®／VANADUR®","高遮蓋耐候無機顏料"],["Agrocer®","種子著色顏料"],["Sanolin®／Duasyn®","水溶性染料，清潔、墨水、皮革"],["Sanodal®／Sanodye®／Sanodure®","鋁陽極染料（原開瑞色彩），耐光值可達 8 級"],["Hostafine®／Flexonyl®／AQUIS™","水性色漿：木器、文具、墨水、調色"],["Graphtol®／Licosperse™","經濟型塑膠顏料；礦物油基色漿（農化、肥料）"]],
-   apps:["arch","wood","bake","protect","ink","eng","stationery","agri","textile","cosm","anodye"], url:SITE+"/product_b5a"},
+   apps:["arch","wood","bake","protect","ink","eng","stationery","agri","textile","cosm","anodye"], url:SITE+"/product_b5a", line:"Sudarshan 有機顏料"},
   {id:"aralon", cat:"pig", name:"Aralon", tag:"螢光與特殊色料",
    desc:"螢光、夜光／磷光、UV 顯色防偽顏料，高階品無甲醛。",
    series:[["Aragen／Araqua","無甲醛高亮螢光（溶劑／水性）"],["Araglo","稀土長效蓄光磷光"],["Araguard／Aralux","UV 顯色防偽、檢漏"],["Aramoist","遇水 UV 下發光，示漏用"],["Araplast","聚烯烴、TPU 熔融型螢光"],["Arajet／Araprint","噴墨、印刷油墨用"],["Aratex","水性螢光分散體，紡織印刷"],["Aramark","標記筆用無甲醛螢光乳液"]],
-   apps:["arch","bake","ink","inkjet","eng","stationery","textile","leak"], url:SITE+"/product_b2a"},
+   apps:["arch","bake","ink","inkjet","eng","stationery","textile","leak"], url:SITE+"/product_b2a", line:"Aralon 螢光顏料"},
   {id:"huayuan", cat:"pig", name:"華源新材", tag:"氧化鐵顏料（Hyrox 系列）",
    desc:"通用及微米級氧化鐵，色彩穩定、遮蓋力強。",
    series:[["氧化鐵紅／黃／黑／橙／棕","通用與微米級"],["複合鐵綠","複合調配鐵綠色系"]],
@@ -838,7 +877,7 @@ const PRODUCTS = [
   {id:"borregaard", cat:"filler", name:"Borregaard", tag:"Exilva® MFC、生質分散劑（挪威）",
    desc:"天然生質搖變劑與木質素分散劑，價格具競爭力。",
    series:[["Exilva®","微纖化纖維素 MFC，抗沉降、流變穩定"],["Vanisperse® CB","水性碳黑／顏料分散劑"],["Ultrazine® NA／Borresperse® NA","木質素分散劑"]],
-   apps:["arch","wood","hma","inkjet","ink","build"], url:SITE+"/product_b3a"},
+   apps:["arch","wood","hma","inkjet","ink","build"], url:SITE+"/product_b3a", line:"Borregaard 微米纖維素"},
 
   // ---------- 樹脂／塗層前驅體 ----------
   {id:"durazane", cat:"resin", name:"Merck Durazane®", tag:"聚矽氮烷（德國默克）",
@@ -870,7 +909,7 @@ const PRODUCTS = [
   {id:"quartzene", cat:"filler", name:"Svenska Aerogel", tag:"Quartzene® 二氧化矽氣凝膠（瑞典）",
    desc:"超輕、低導熱，粉體與水性漿料。",
    series:[["Quartzene®","孔隙率 >97%，熱導 0.018～0.022 W/m·K"],["RCI 水性氣凝膠漿料","厚塗不裂、不揚塵"]],
-   apps:["thermal","arch","build"], url:SITE+"/product_b11a"},
+   apps:["thermal","arch","build"], url:SITE+"/product_b11a", line:"Svenska Aerogel 氣凝膠"},
   {id:"aeropor", cat:"filler", name:"Aeropor®", tag:"建築用輕質填料（德國）",
    desc:"閉孔多孔、疏水結構：輕量、隔熱、快乾、耐火。",
    series:[["Aeropor®","多粒徑輕質填料"],["U-Fill S／U-Fill SL","通用級，兼顧結構支撐與隔熱"]],
@@ -888,20 +927,29 @@ const PRODUCTS = [
   {id:"alufinish", cat:"surface", name:"AluFinish", tag:"鋁陽極處理藥水（德國）｜台日韓獨家",
    desc:"全系列鋁陽極處理藥水，用於建築、汽車與電子。",
    series:[["Alficlean","前處理清洗／除油"],["Alfisatin／Steinex","鹼性蝕刻、霧面"],["Alfideox","除灰／活化"],["Alfinox","陽極氧化浴添加劑，總成本約降 13%"],["Alfiseal","封孔添加劑，Qualanod 認可"],["Alficolor／Tin ColorAL","電解著色"],["Alfiflex","化學／電化學拋光"],["Alupolish","陽極鋁清潔保養"]],
-   apps:["anochem"], url:SITE+"/product_m9a.html"}
+   apps:["anochem"], url:SITE+"/product_m9a.html", line:"AluFinish 鋁陽極處理原料"}
 ];
 
 /* Google 表單選項（與現有表單一字不差） */
 const OPTS = {
-  nature:["經銷商 (Distributor)","設計師/建築師 (Designer/Architect)","媒體/行銷 (Press/Marketing)","終端客戶 (End Customer)","裝修工程公司 (Renovation Contractor)","建材製造商 (Building Material Manufacturer)","塗料/油墨製造商 (Coating/Ink Manufacturer)"],
+  nature:["經銷商 (Distributor)","設計師/建築師 (Designer/Architect)","媒體/行銷 (Press/Marketing)","終端客戶 (End Customer)","裝修工程公司 (Renovation Contractor)","建材製造商 (Building Material Manufacturer)","塗料/油墨製造商 (Coating/Ink Manufacturer)","建設/營造公司 (Developer/Construction)","學生/一般參觀者 (Student/General Visitor)"],
   region:["北區","中區","南區","東區","海外"],
-  apps:["內牆塗料 (Interior Wall Coating)","外牆塗料 (Exterior Wall Coating)","抗污/防刮塗料 (Anti-Stain/Scratch-Resistant)","高端裝飾塗料 (Premium Decorative)","通用工業塗料 (General Industrial)","木器塗料 (Wood Coating)","卷材塗料 (Coil Coating)","噴墨塗料 (Inkjet)","油墨 (Ink)","輕質混凝土/砂漿 (Lightweight Concrete/Mortar)","隔熱材料 (Thermal Insulation)","輕質複合材料 (Lightweight Composites)","特殊珠光效果應用 (Effect Pigment Applications)"],
-  lines:["RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)","SUSONITY 珠光顏料","AEROPOR 輕質材料系列"],
+  apps:["內牆塗料 (Interior Wall Coating)","外牆塗料 (Exterior Wall Coating)","抗污/防刮塗料 (Anti-Stain/Scratch-Resistant)","通用工業塗料 (General Industrial)","木器塗料 (Wood Coating)","卷材塗料 (Coil Coating)","噴墨塗料 (Inkjet)","油墨 (Ink)","輕質混凝土/砂漿 (Lightweight Concrete/Mortar)","隔熱材料 (Thermal Insulation)","輕質複合材料 (Lightweight Composites)","特殊珠光效果應用 (Effect Pigment Applications)"],
+  lines:["RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)","SUSONITY 珠光顏料","AEROPOR 輕質材料系列","Svenska Aerogel 氣凝膠","Phomera 琥珀效果顏料","Sudarshan 有機顏料","Aralon 螢光顏料","Borregaard 微米纖維素","AluFinish 鋁陽極處理原料"],
   needs:["樣品索取 (Sample Request)","電子型錄 (Digital Brochures)","安排客戶拜訪 (Customer Visit)","技術支援諮詢 (Technical Support)","塗層性能演示 (Coating Performance Demo)","應用建議 (Application Consultation)","報價需求 (Quotation Request)","合作洽談 (Partnership Discussion)"],
   contact:["電話聯繫","Email","LINE (若勾選此項請留下您的Line ID)","安排面訪","暫不需要聯繫,僅索取資料"]
 };
-const MULTI = {nature:false, region:false, apps:true, lines:true, needs:true, contact:true};
-const HAS_OTHER = {nature:true, apps:true, needs:true};
+const PROJ = ["有，目前正在選材／測試 (Currently selecting/testing materials)","有，預計 3 個月內導入 (Planned within 3 months)","有，預計 3–12 個月內導入 (Planned within 3–12 months)","有，仍在概念／規劃階段 (Concept / planning stage)","目前沒有特定專案，先了解 (No specific project yet)"];
+OPTS.proj = PROJ;
+OPTS.lident = OPTS.nature;
+OPTS.lproj = PROJ;
+OPTS.lapps = ["建築外牆／立面","室內牆面／裝飾塗料","金屬／鋁板／門窗","木材／家具","水泥／石材","塗料／油墨配方"];
+OPTS.ldates = ["12/10（四）","12/11（五）","12/12（六）","12/13（日）"];
+OPTS.ltimes = ["10:30–12:00","13:00–15:00","15:00–17:00"];
+OPTS.laccept = ["可以，其他可參加日期／時段也可安排","不行，僅能依上述偏好時段"];
+OPTS.lconsent = ["我已閱讀並同意上述個人資料蒐集、處理及利用說明"];
+const MULTI = {nature:false, region:false, apps:true, lines:true, needs:true, contact:true, proj:false, lident:false, lproj:false, lapps:true, ldates:true, ltimes:true, laccept:false, lconsent:true};
+const HAS_OTHER = {nature:true, apps:true, needs:true, lident:true, lapps:true};
 /* 選型應用 → 表單「應用類別」 */
 const APP_TO_FORM = {
   arch:"外牆塗料 (Exterior Wall Coating)", wood:"木器塗料 (Wood Coating)", bake:"通用工業塗料 (General Industrial)",
@@ -930,7 +978,7 @@ function route(){
   if(v==="done" && !lastResult) v="home";
   VIEWS.forEach(x=>$("#v-"+x).hidden = x!==v);
   $("#backBtn").hidden = v==="home";
-  const fab=$("#fabLine"); if(fab) fab.hidden = (v==="contact"||v==="done");
+  const fab=$("#fabLine"); if(fab) fab.hidden = (v==="contact"||v==="done"||v==="lab");
   $("#expoLabel").hidden = v!=="home" && window.innerWidth<380;
   window.scrollTo(0,0);
   if(v==="products" && pendingFocus){
@@ -938,7 +986,7 @@ function route(){
     setTimeout(()=>{ const c=document.querySelector('[data-pid="'+id+'"]'); if(!c) return; c.scrollIntoView({block:"start"}); window.scrollBy(0,-70); const t=c.querySelector(".toggle"); if(t && t.getAttribute("aria-expanded")==="false") t.click(); c.classList.add("focus"); setTimeout(()=>c.classList.remove("focus"),1600); },50);
   }
 }
-$("#backBtn").onclick = ()=>{ location.hash="#home"; };
+$("#backBtn").onclick = ()=>{ const fromSol=!$("#v-solution").hidden; location.hash="#home"; if(fromSol) setTimeout(()=>$("#needSec").scrollIntoView({block:"start"}),60); };
 window.addEventListener("hashchange", route);
 
 /* ===================== 產品示意動畫（SVG） ===================== */
@@ -1193,13 +1241,18 @@ const SOLUTIONS = [
   {id:"graffiti", label:"抗塗鴉", desc:"油性筆、白板筆、原子筆塗鴉，用乾紙巾就能擦除，公共空間好維護。", items:[["hyperdurays",[1,3]],["duravance",[3,5]]]},
   {id:"special", label:"特殊材料", desc:"建築輕質填料、珠光效果、生質流變材料與鋁陽極處理等特殊材料。", items:[["aeropor",null],["susonity",null],["phomera",null],["borregaard",null],["alufinish",null]]}
 ];
+const SOL_APPS = {
+  stain:["抗污/防刮塗料 (Anti-Stain/Scratch-Resistant)"], hydro:["外牆塗料 (Exterior Wall Coating)"], weather:["外牆塗料 (Exterior Wall Coating)"],
+  corrosion:["通用工業塗料 (General Industrial)"], water:["內牆塗料 (Interior Wall Coating)","外牆塗料 (Exterior Wall Coating)"],
+  graffiti:["抗污/防刮塗料 (Anti-Stain/Scratch-Resistant)"], special:["輕質混凝土/砂漿 (Lightweight Concrete/Mortar)","特殊珠光效果應用 (Effect Pigment Applications)"]
+};
 const SERIES = [
   {pid:"hyperdurays", name:"HyperDurays", tag:"高機能建築表面保護塗料", pts:"抗污、疏水、易潔、耐候、防腐蝕"},
   {pid:"trayx", name:"T-RayX + HydroRayX", tag:"水性高機能塗料解決方案", pts:"依牌號可直接使用、加水調整或配方導入"},
   {pid:"duravance", name:"Duravance", tag:"高性能塗層核心材料", pts:"適合塗料／建材製造商與配方開發"},
   {pid:"nextgen", name:"NextGen", tag:"實色與特殊功能保護", pts:"實色保護、UV 等功能延伸"}
 ];
-const SPEC = [["aeropor","Aeropor","建築用輕質填料"],["susonity","SUSONITY","珠光效果顏料"],["phomera","Phomera","特殊色彩與效果"],["borregaard","Borregaard","生質流變與分散材料"],["alufinish","AluFinish","鋁陽極處理藥水"]];
+const SPEC = [["aeropor","Aeropor","建築用輕質填料"],["susonity","SUSONITY","珠光效果顏料"],["phomera","Phomera","琥珀效果顏料"],["borregaard","Borregaard","生質流變與分散材料"],["alufinish","AluFinish","鋁陽極處理藥水"]];
 let pendingFocus=null;
 function goProduct(pid){ pendingFocus=pid; prodCat="all"; if(location.hash==="#products") route(); else location.hash="#products"; }
 function showcase(){
@@ -1224,7 +1277,10 @@ function renderSolution(id){
 $("#solToContact").addEventListener("click",()=>{
   if(!curSol) return;
   const ps=curSol.items.map(([pid])=>byId(pid));
-  ps.forEach(p=>{ if(p.line) setChecked("lines",p.line,true); });
+  if(window.__solLines) window.__solLines.forEach(l=>setChecked("lines",l,false));
+  window.__solLines=ps.map(p=>p.line).filter(Boolean);
+  window.__solLines.forEach(l=>setChecked("lines",l,true));
+  (SOL_APPS[curSol.id]||[]).forEach(a=>setChecked("apps",a,true));
   setChecked("needs", OPTS.needs[1], true);
   const other=$("#o-needs-other-text"); if(other){ other.value="感興趣方案："+curSol.label+"（"+ps.map(p=>p.name).join("、")+"）"; setChecked("needs","__other__",true); }
 });
@@ -1325,14 +1381,33 @@ function updateLineField(){
   $("#lineUserField label").className = wantLine ? "req" : "";
 }
 Object.keys(OPTS).forEach(buildOpts);
+// 選填單選題（專案狀態）：再點一次可取消
+document.querySelectorAll('input[name="proj"]').forEach(r=>{ r.addEventListener("mousedown",()=>{ r.dataset.was=r.checked?"1":""; }); r.addEventListener("click",()=>{ if(r.dataset.was==="1"){ r.checked=false; r.dataset.was=""; r.dispatchEvent(new Event("change",{bubbles:true})); } }); });
 
-/* 兩張表單共用欄位互相帶入 */
-const SHARED = [["f-company","lab-company"],["f-title","lab-title"],["f-name","lab-name"],["f-phone","lab-phone"]];
-SHARED.forEach(([a,b])=>{
-  const A=$("#"+a), B=$("#"+b);
-  A.addEventListener("input",()=>{ if(!B.dataset.touched) B.value=A.value; });
-  B.addEventListener("input",()=>{ B.dataset.touched="1"; if(!A.value) A.value=B.value; });
+/* 兩張表單共用欄位：互相帶入，並存在本機（localStorage），下次開啟自動帶入 */
+const PF_TEXT = [["name","f-name","lab-name"],["company","f-company","lab-company"],["title","f-title","lab-title"],["phone","f-phone","lab-phone"],["email","f-email","lab-email"],["note","f-projnote","lab-note"]];
+const PF_RADIO = [["identity","nature","lident"],["project","proj","lproj"]];
+function readProfile(){ return load("rci_profile") || {}; }
+function saveProfile(k,v){ const p=readProfile(); p[k]=v; store("rci_profile",p); }
+function setRadio(group,val,other){ document.querySelectorAll(`input[name="${group}"]`).forEach(i=>i.checked=(i.value===val)); const t=$(`#o-${group}-other-text`); if(t) t.value = val==="__other__" ? (other||"") : ""; }
+PF_TEXT.forEach(([k,a,b])=>{ const A=$("#"+a), B=$("#"+b);
+  A.addEventListener("input",()=>{ B.value=A.value; saveProfile(k,A.value); });
+  B.addEventListener("input",()=>{ A.value=B.value; saveProfile(k,B.value); }); });
+PF_RADIO.forEach(([k,ga,gb])=>{
+  const sync=(from,to)=>{ const v=getChecked(from)[0]||""; const o=$(`#o-${from}-other-text`); const ot=o?o.value:""; setRadio(to,v,ot); saveProfile(k,{v,ot}); };
+  ["change","input"].forEach(ev=>{ $("#o-"+ga).addEventListener(ev,()=>sync(ga,gb)); $("#o-"+gb).addEventListener(ev,()=>sync(gb,ga)); });
 });
+(function restoreProfile(){
+  const p=readProfile();
+  PF_TEXT.forEach(([k,a,b])=>{ if(p[k]){ $("#"+a).value=p[k]; $("#"+b).value=p[k]; } });
+  PF_RADIO.forEach(([k,ga,gb])=>{ if(p[k]&&p[k].v){ setRadio(ga,p[k].v,p[k].ot); setRadio(gb,p[k].v,p[k].ot); } });
+})();
+document.querySelectorAll("[data-clear]").forEach(b=>b.addEventListener("click",()=>{
+  store("rci_profile"); ["leadForm","labForm"].forEach(id=>$("#"+id).reset());
+  document.querySelectorAll(".other-in").forEach(i=>i.value="");
+  document.querySelectorAll(".field.bad").forEach(f=>f.classList.remove("bad"));
+  toast("已清除這支手機上保存的資料");
+}));
 
 /* ===================== 送出 ===================== */
 async function postGoogleForm(cfg, pairs){
@@ -1368,29 +1443,37 @@ function req(id){ const i=$("#"+id); const ok=i.value.trim()!==""; i.closest(".f
 function validEmail(id){ const i=$("#"+id); const ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(i.value.trim()); i.closest(".field").classList.toggle("bad",!ok); return ok; }
 function reqGroup(g){ const v=getChecked(g); let ok=v.length>0; if(v.includes("__other__") && !$(`#o-${g}-other-text`).value.trim()) ok=false; $("#o-"+g).closest(".field").classList.toggle("bad",!ok); return ok; }
 
-/* 色彩實驗室報名 */
+/* 色彩實驗室體驗申請 */
 $("#labForm").addEventListener("submit", async e=>{
   e.preventDefault();
-  const ids=["lab-company","lab-title","lab-name","lab-phone"];
-  const ok = ids.map(req).every(Boolean);
-  if(!ok){ toast("請填寫所有欄位"); document.querySelector("#labForm .bad input")?.focus(); return; }
-  const v = Object.fromEntries(ids.map(i=>[i.slice(4), $("#"+i).value.trim()]));
-  const summary = `【色彩實驗室報名】${CONFIG.expoName}\n公司：${v.company}\n職位：${v.title}\n姓名：${v.name}\n電話：${v.phone}\n來源：${SRC_LABEL}`;
+  const checks=[req("lab-name"),req("lab-company"),req("lab-title"),req("lab-phone"),
+    reqGroup("lident"),reqGroup("lproj"),reqGroup("lapps"),reqGroup("ldates"),reqGroup("ltimes"),reqGroup("laccept"),reqGroup("lconsent")];
+  const em=$("#lab-email"); if(em.value.trim()) checks.push(validEmail("lab-email")); else em.closest(".field").classList.remove("bad");
+  const errBox=$("#labErr");
+  if(!checks.every(Boolean)){ errBox.textContent="還有必填欄位沒填，請檢查標示紅框的項目。"; errBox.hidden=false; document.querySelector("#labForm .bad")?.scrollIntoView({behavior:"smooth",block:"center"}); return; }
+  errBox.hidden=true;
+  const val=id=>$("#"+id).value.trim();
+  const E=CONFIG.labForm.entries;
+  const pairs=[[E.name,val("lab-name")],[E.company,val("lab-company")],[E.title,val("lab-title")],[E.phone,val("lab-phone")]];
+  if(val("lab-email")) pairs.push([E.email,val("lab-email")]);
+  if(val("lab-linename")) pairs.push([E.lineName,val("lab-linename")]);
+  const addGroup=(g,key)=>{ getChecked(g).forEach(v=>{ if(v==="__other__"){ pairs.push([key,"__other_option__"]); pairs.push([key+".other_option_response",$(`#o-${g}-other-text`).value.trim()]); } else pairs.push([key,v]); }); };
+  addGroup("lident",E.identity); addGroup("lproj",E.project); addGroup("lapps",E.apps);
+  if(val("lab-note")) pairs.push([E.projectNote,val("lab-note")]);
+  addGroup("ldates",E.dates); addGroup("ltimes",E.times); addGroup("laccept",E.accept); addGroup("lconsent",E.consent);
+  const show=g=>getChecked(g).map(v=>v==="__other__" ? "其他："+$(`#o-${g}-other-text`).value.trim() : v.replace(/\s*\(.*\)$/,"")).join("、");
+  const summary=`【Color Lab 體驗申請】${CONFIG.expoName}\n姓名：${val("lab-name")}\n公司：${val("lab-company")}\n職稱：${val("lab-title")}\n電話：${val("lab-phone")}`
+    +(val("lab-linename")?`\nLINE 顯示名稱：${val("lab-linename")}`:"")
+    +`\n身分：${show("lident")}\n專案狀態：${show("lproj")}\n想了解：${show("lapps")}\n希望日期：${show("ldates")}\n希望時段：${show("ltimes")}\n其他場次：${getChecked("laccept")[0].startsWith("可以")?"可以":"不行"}`
+    +(val("lab-note")?`\n專案簡述：${val("lab-note")}`:"")+`\n來源：${SRC_LABEL}`;
   const btn=$("#labSubmit"); btn.disabled=true; btn.textContent="送出中…";
   let saved=false;
-  try{
-    if(CONFIG.labForm.action){
-      const E=CONFIG.labForm.entries;
-      await postGoogleForm(CONFIG.labForm, [[E.company,v.company],[E.title,v.title],[E.name,v.name],[E.phone,v.phone]]);
-      saved=true;
-    }
-  }catch(err){ /* 網路失敗：改由 LINE 傳送 */ }
-  btn.disabled=false; btn.textContent="送出報名";
-  showDone("報名已收到！",
-    saved ? "我們已記錄您的色彩實驗室報名，工作人員將為您安排體驗，相關通知會透過 RCI 官方 LINE 告訴您。"
-          : "網路有點不穩，請按「回到 LINE」把報名資料傳給我們，即完成報名。",
+  try{ if(CONFIG.labForm.action){ await postGoogleForm(CONFIG.labForm, pairs); saved=true; } }catch(err){}
+  btn.disabled=false; btn.textContent="送出申請";
+  showDone("申請已收到！",
+    saved ? "送出不代表預約完成。請按「回到 LINE」把申請傳給我們，工作人員審核後會在 RCI 官方 LINE 一對一通知您的場次。"
+          : "網路有點不穩，請按「回到 LINE」把申請資料傳給我們，工作人員會在 LINE 上為您安排。",
     summary);
-  store("rci_lab_done", true);
 });
 
 /* 客戶資料表 */
@@ -1419,9 +1502,11 @@ $("#leadForm").addEventListener("submit", async e=>{
   needs.filter(v=>v!=="__other__").forEach(v=>pairs.push([E.needs,v]));
   if(otherTxt){ pairs.push([E.needs,"__other_option__"]); pairs.push([E.needs+".other_option_response", otherTxt]); }
   if(val("f-lineuser")) pairs.push([E.lineUser,val("f-lineuser")]);
+  getChecked("proj").forEach(v=>pairs.push([E.project,v]));
+  if(val("f-projnote")) pairs.push([E.projectNote,val("f-projnote")]);
 
   const show = g=>getChecked(g).map(v=>v==="__other__" ? "其他："+$(`#o-${g}-other-text`).value.trim() : v.replace(/\s*\(.*\)$/,"")).join("、");
-  const summary = `【${CONFIG.expoName}｜客戶資料】\n姓名：${val("f-name")}\n公司：${val("f-company")}\n職稱：${val("f-title")}\n電話：${val("f-phone")}\nEmail：${val("f-email")}\n公司性質：${show("nature")}\n區域：${show("region")}\n應用：${show("apps")}\n產品線：${show("lines")}\n需求：${show("needs")}\n聯繫方式：${show("contact")}` + (val("f-lineuser")?`\nLINE ID：${val("f-lineuser")}`:"") + (val("f-note")?`\n備註：${val("f-note")}`:"") + `\n來源：${SRC_LABEL}`;
+  const summary = `【${CONFIG.expoName}｜客戶資料】\n姓名：${val("f-name")}\n公司：${val("f-company")}\n職稱：${val("f-title")}\n電話：${val("f-phone")}\nEmail：${val("f-email")}\n公司性質：${show("nature")}\n區域：${show("region")}\n應用：${show("apps")}\n產品線：${show("lines")}\n需求：${show("needs")}\n聯繫方式：${show("contact")}` + (val("f-lineuser")?`\nLINE ID：${val("f-lineuser")}`:"") + (getChecked("proj").length?`\n專案狀態：${show("proj")}`:"") + (val("f-projnote")?`\n專案簡述：${val("f-projnote")}`:"") + (val("f-note")?`\n備註：${val("f-note")}`:"") + `\n來源：${SRC_LABEL}`;
 
   const btn=$("#leadSubmit"); btn.disabled=true; btn.textContent="送出中…";
   let saved=false;
