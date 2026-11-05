@@ -246,6 +246,48 @@ textarea{width:100%;border:1px solid #c9d6e4;background:#fff;border-radius:10px;
 .fab-line{max-width:calc(100% - 32px)}
 @media (prefers-reduced-motion:reduce){.hero2 *,.logo-anim *{animation:none!important}}
 
+
+/* ===== v2 home ===== */
+.hero-cta{display:flex;flex-direction:column;gap:10px;margin-top:6px;animation:rise .6s 1.2s ease-out both}
+.hero-cta .btn{font-size:16px;padding:13px 16px}
+.hero2 h1{font-size:24px}
+.needs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.need{display:flex;align-items:center;gap:12px;min-height:64px;padding:12px 14px;border-radius:14px;text-decoration:none;color:var(--ink);
+  background:linear-gradient(180deg,#fff,#f1f6fc);border:1px solid #d5e2f0;box-shadow:0 4px 0 #c6d6e8,0 10px 16px -10px rgba(17,60,120,.45);
+  animation:rise .45s ease-out both;animation-delay:calc(var(--i,0)*60ms);transition:transform .12s ease}
+.need:active{transform:translateY(4px);box-shadow:0 0 0 #c6d6e8}
+.need b{font-size:17px}
+.need:last-child:nth-child(odd){grid-column:1/-1}
+.ni{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:#fff;background:linear-gradient(150deg,#1a7ee0,#0bb594);box-shadow:inset 0 -3px 0 rgba(0,0,0,.15)}
+.ni svg{width:21px;height:21px}
+.series4{display:grid;grid-template-columns:1fr;gap:12px}
+.s4{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;text-decoration:none;color:#fff;background:linear-gradient(160deg,#0d4f9c,#116dcf 60%,#0b9ef7);box-shadow:0 12px 24px -16px rgba(17,109,207,.8)}
+.s4 .pvis{border-radius:0;background:transparent}
+.s4>div{padding:2px 16px 16px;display:flex;flex-direction:column;gap:2px}
+.s4 b{font-size:20px;font-family:var(--f-latin)}
+.s4 .t{font-size:15px;font-weight:700;color:#e8f4ff}
+.s4 .p{font-size:13.5px;color:#bff3e8}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.spc{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:14px;background:#fff;border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:0 3px 0 #dbe5f0}
+.spc b{font-family:var(--f-latin);font-size:15px}
+.spc span{font-size:12.5px;color:var(--muted)}
+.spc:last-child:nth-child(odd){grid-column:1/-1}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.quick a{display:flex;flex-direction:column;align-items:center;gap:1px;padding:12px 6px;border-radius:12px;background:#eef5ff;border:1px solid #c6dcf5;text-decoration:none;color:var(--blue);text-align:center}
+.quick b{font-size:14px}.quick span{font-size:11.5px;color:var(--muted)}
+.solhead h2{display:flex;align-items:center;gap:10px;margin-top:2px}
+.solhead .lead{margin-top:8px}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;position:relative;z-index:1}
+.values div{display:flex;flex-direction:column;gap:2px;padding:8px;border-radius:10px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25)}
+.values b{font-family:var(--f-latin);font-size:12px;line-height:1.25}
+.values span{font-size:11.5px;color:#cfe5ff}
+.subhead{font-size:12.5px;font-weight:700;color:var(--muted);margin-top:2px}
+.donenote{font-size:12.5px;color:var(--muted)}
+.pcard.focus{outline:3px solid var(--teal);outline-offset:3px;border-radius:18px}
+@keyframes nx1{0%,25%{transform:none;opacity:1}55%,100%{transform:translateY(52px);opacity:0}}
+@keyframes nx2{0%,25%{transform:none;opacity:1}55%,100%{transform:translateY(26px);opacity:0}}
+@keyframes nx3{0%,40%{opacity:1}60%,100%{opacity:0}}
+@keyframes nx4{0%,45%{opacity:0;transform:scaleY(.3)}65%,95%{opacity:1;transform:none}100%{opacity:0}}
 /* ===== motion & product visuals ===== */
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
@@ -424,40 +466,44 @@ const CONFIG = {
           </svg>
           <div class="logo-name"><b>RAYOUNG<br>CHEMTECH INC<i>.</i></b><span>雷暘科技實業</span></div>
         </div>
-        <h1>特用化學品<br>開發與整合專家</h1>
-        <p>特用化學 × 研發配方整合，連結上下游，讓材料更快成為市場解決方案。</p>
+        <h1>RCI 建築表面與<br>高機能材料解決方案</h1>
+        <p>從表面保護、水性功能塗料到特殊材料，依不同建築基材與需求提供適合的解決方案。</p>
+        <div class="hero-cta">
+          <button class="btn primary" type="button" id="ctaFind">看看適合我的方案</button>
+          <a class="btn ghost" href="#contact">留下需求，請我們聯絡</a>
+        </div>
       </div>
     </div>
 
-    <nav class="bigs" aria-label="主選單">
-      <a class="big" href="#products">
-        <span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
-        <div><b>產品介紹</b><span>自有品牌與代理品牌</span></div>
-      </a>
-      <a class="big" href="#select">
-        <span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
-        <div><b>產品選型</b><span>找原料、找塗料，幫你配對</span></div>
-      </a>
-      <a class="big" href="#lab">
-        <span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21.5h11.6a2 2 0 0 0 1.7-3L14 9V3"/><path d="M7 15h10"/></svg></span>
-        <div><b>色彩實驗室現場報名</b><span>留下公司、職位、姓名、電話</span></div>
-      </a>
-      <a class="big" href="#contact">
-        <span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span>
-        <div><b>留下您的資料</b><span>索取樣品、型錄，業務主動聯繫</span></div>
-      </a>
-    </nav>
-
-    <div class="step">
-      <div class="secthead"><div><div class="eyebrow">Made by RCI</div><h2>RCI 自有產品</h2></div><a href="#products">看全部 ›</a></div>
-      <div class="showcase" id="showcase"></div>
+    <div class="step" id="needSec">
+      <div><div class="eyebrow">What do you need?</div><h2>您想解決什麼？</h2></div>
+      <div class="needs" id="needGrid"></div>
     </div>
 
-    <div class="brands">
-      <div class="label">RCI 自有品牌</div>
-      <ul class="bgrid" id="ownBrands"></ul>
-      <div class="label" style="margin-top:6px">代理品牌</div>
-      <ul class="bgrid" id="agentBrands"></ul>
+    <div class="step">
+      <div class="secthead"><div><div class="eyebrow">RCI Solutions</div><h2>RCI 解決方案</h2></div><a href="#products">看全部 ›</a></div>
+      <div class="series4" id="seriesGrid"></div>
+    </div>
+
+    <div class="step">
+      <div><div class="eyebrow">Specialty Materials</div><h2>特殊材料</h2></div>
+      <div class="spec" id="specGrid"></div>
+    </div>
+
+    <nav class="quick" aria-label="更多">
+      <a href="#select"><b>產品選型</b><span>找原料、找塗料</span></a>
+      <a href="#lab"><b>色彩實驗室</b><span>現場報名</span></a>
+      <a href="#products"><b>全部產品</b><span>品牌總覽</span></a>
+    </nav>
+  </section>
+
+  <!-- 方案 -->
+  <section class="view" id="v-solution" hidden>
+    <div class="solhead" id="solHead"></div>
+    <div class="list" id="solList"></div>
+    <div class="btns">
+      <a class="btn primary" href="#contact" id="solToContact">索取這個方案的資料</a>
+      <button class="btn ghost" type="button" id="solBack">看其他需求</button>
     </div>
   </section>
 
@@ -484,7 +530,7 @@ const CONFIG = {
       <h3>你在找什麼？</h3>
       <div class="modecards">
         <button class="mode" type="button" data-mode="raw" aria-pressed="false"><b>找原料</b><span>顏料、添加劑、樹脂、功能填料、表面處理藥劑</span></button>
-        <button class="mode" type="button" data-mode="coat" aria-pressed="false"><b>找塗料</b><span>RCI 自有塗料與樹脂，直接解決表面問題</span></button>
+        <button class="mode" type="button" data-mode="coat" aria-pressed="false"><b>找塗料</b><span>RCI 表面保護與水性功能塗料，依基材與需求推薦適合方案</span></button>
       </div>
     </div>
 
@@ -577,18 +623,16 @@ const CONFIG = {
   <section class="view" id="v-done" hidden>
     <div class="done">
       <div class="check" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div>
-      <h2 id="doneTitle">已收到您的資料</h2>
-      <p class="lead" id="doneText">最後一步：加入 RCI 官方 LINE，把資料傳給我們，之後的型錄、樣品與活動通知都會在 LINE 上聯繫您。</p>
-      <ol class="howto" id="howto"><li>按下綠色按鈕，資料會自動複製</li><li>開啟 RCI 官方 LINE（@rcitw）並加入好友</li><li>在聊天框「貼上」後送出，業務就會與您聯繫</li></ol>
-      <div class="summary" id="doneSummary"></div>
+      <h2 id="doneTitle">需求已收到！</h2>
+      <p class="lead" id="doneText">我們已記錄您感興趣的產品與應用需求，後續將由雷暘團隊協助提供適合的產品資料或樣品建議。</p>
       <div class="btns">
         <a class="btn line" id="lineBtn" href="#" target="_blank" rel="noopener">
           <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6.1c1.5-1.6 2.2-3.2 2.2-4.9C22 6.6 17.5 3 12 3Z"/></svg>
-          複製資料並開啟官方 LINE
+          回到 LINE
         </a>
-        <button class="btn ghost" type="button" id="copyBtn">複製資料</button>
-        <a class="btn ghost" href="#home">回首頁</a>
+        <a class="btn ghost" href="#products">繼續瀏覽產品</a>
       </div>
+      <p class="donenote">按「回到 LINE」會把您填寫的資料帶入 RCI 官方 LINE（@rcitw）聊天室，送出即可。</p>
     </div>
   </section>
 
@@ -601,6 +645,15 @@ const CONFIG = {
 <script>
 /* ===================== 產品資料（來源：2025 雷暘產品型錄 V2、rayoungnet.com） ===================== */
 const SITE = "https://www.rayoungnet.com";
+const GROUPS = [
+  {id:"own",   label:"RCI 自有品牌"},
+  {id:"build", label:"建材功能材料"},
+  {id:"color", label:"特殊色彩與效果"},
+  {id:"tech",  label:"配方與表面處理技術"}
+];
+const GRP_OF = {aeropor:"build",quartzene:"build",susonity:"color",phomera:"color",sudarshan:"color",aralon:"color",borregaard:"tech",alufinish:"tech"};
+const grpOf = p => p.own ? "own" : (GRP_OF[p.id] || "tech");
+const GRP_ORDER = {own:["hyperdurays","trayx","hydrorayx","duravance","nextgen","raysitive"],build:["aeropor","quartzene"],color:["susonity","phomera","sudarshan","aralon"],tech:["borregaard","alufinish"]};
 const CATS = [
   {id:"own",     label:"RCI 自有產品"},
   {id:"pig",     label:"顏料／色料"},
@@ -708,34 +761,41 @@ const COAT_USES = [
   {id:"stone",   label:"花崗岩／大理石底漆"},
   {id:"peel",    label:"暫時性可剝保護漆"},
   {id:"water",   label:"水性塗料用樹脂"},
-  {id:"additive",label:"塗料／油墨／膠黏劑添加劑"}
+  {id:"additive",label:"塗料／油墨／膠黏劑添加劑"},
+  {id:"color",   label:"實色保護（一層取代三層）"},
+  {id:"uv",      label:"UV 防護、防止變色"}
 ];
 
 /* 品牌與產品（line = 對應 Google 表單「產品線」選項） */
 const PRODUCTS = [
   // ---------- RCI 自有 ----------
-  {id:"hyperdurays", cat:"own", own:true, name:"HyperDurays®", tag:"多功能高效鍍膜塗料",
-   desc:"源自航太與軍規的預陶瓷塗料（液態玻璃）。1–10 µm 超薄塗層，硬度 2H–7H、耐熱 >400°C、水接觸角最高 125°，SGS 4000 小時耐候（約 20 年）。",
+  {id:"hyperdurays", cat:"own", own:true, name:"HyperDurays®", tag:"高機能表面保護塗料",
+   desc:"針對金屬、石材、玻璃、木材及建築表面提供抗污、疏水、易潔、耐候及防腐蝕等功能性保護方案。SGS 4000 小時耐候、水接觸角最高 125°。",
    series:[["卷鋼塗料 CP-0511／CP-0412a","高疏水，無氟達 PVDF 級耐久，0T 不裂"],["金屬 MT-0722／石材 ST-0825／木材 WD-0319／玻璃 GS-1002","高疏水耐候保護，抑制藻類，不黃變"],["汽車美容 1215SI／1030SI","類鑽石高光澤鍍膜，疏水疏油"],["高硬度耐刮硬塗層","硬度與柔韌兼具，耐刮耐衝擊"],["脫模 0612KR","模具用抗沾黏塗層，降低摩擦"],["嚴苛環境 TP-1030B（2K）","氟化矽樹脂，耐腐蝕，20–30 µm"]],
    coat:{coil:0,surface:1,car:2,hard:3,release:4,anticor:5},
    apps:["protect","bake","wood"], url:SITE+"/product_m3a", line:"RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)"},
-  {id:"duravance", cat:"own", own:true, name:"Duravance®", tag:"高功能合成共聚樹脂與添加劑",
-   desc:"Si–N 聚矽氮烷、Si–O 聚矽氧烷、Si–F 矽氟樹脂；側鏈氟改質，氟僅 ppm 級。HyperDurays 的核心技術。",
+  {id:"duravance", cat:"own", own:true, name:"Duravance®", tag:"高性能表面保護核心材料",
+   desc:"提供塗料與材料製造商高性能透明保護、耐候、耐熱及功能性表面改質的核心材料技術。",
    series:[["聚矽氮烷樹脂","快速固化／慢速固化"],["RC 系列","聚矽氮烷共聚物，依硬度與效益區分"],["RD 系列","聚矽氧烷共聚物，依結構區分"],["RF 系列","含氟改質聚矽氮烷共聚物"],["RT 系列","耐高溫聚矽氮烷共聚物"],["AF 系列","搭配 RCI 樹脂的含氟添加劑"],["氟化 UV 丙烯酸樹脂","電子業耐磨耗保護"]],
    coat:{hard:1,anticor:3,heat:4,elec:6,surface:0},
    apps:["protect","bake","barrier","af"], url:SITE+"/product_m1b", line:"RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)"},
-  {id:"trayx", cat:"own", own:true, name:"T-RayX®", tag:"高功能共聚樹脂與添加劑",
-   desc:"矽基水性解決方案，環保配方。矽-丙烯酸 IPN、核殼、自交聯分散體與金屬無機矽酸鹽，兼顧耐熱、柔韌與高填料。",
+  {id:"trayx", cat:"own", own:true, name:"T-RayX®", tag:"水性高機能塗料／材料",
+   desc:"從建築、木器、地坪到金屬與玻璃，依不同產品提供直接使用、加水調整或配方導入的水性功能塗層方案。",
    series:[["矽-丙烯酸共聚物 IPN","矽結構 5～30%"],["核殼結構","良好柔軟性與延展性"],["自交聯分散體","不需成膜助劑"],["無機有機混成","耐溫、耐候、抗汙"],["矽-丙烯酸共聚物 IPN","矽結構 >60%，高耐熱、柔韌、高填料"],["金屬無機矽酸鹽","純無機、耐高溫、初期耐水性佳"]],
    coat:{water:0,heat:4,surface:3},
    apps:["arch","floor","protect"], url:SITE+"/product_m1c", line:"RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)"},
-  {id:"hydrorayx", cat:"own", own:true, name:"HydroRayX", tag:"多功能高效塗料",
-   desc:"自交聯丙烯酸酯體系，取代傳統水性壓克力與 PU 塗料，耐久性更佳。",
+  {id:"hydrorayx", cat:"own", own:true, name:"HydroRayX", tag:"水性應用型塗料",
+   desc:"自交聯丙烯酸體系的水性應用型塗料，可直接用於塑膠、水泥、石材底漆與暫時性保護，取代傳統水性壓克力與 PU 塗料。",
    series:[["塑膠底漆 primer","增加印刷性"],["水泥基材底漆","大孔隙型基材"],["花崗岩／大理石底漆","小孔隙型基材"],["暫時性防護漆","抗刮、可回黏、可剝"]],
    coat:{pprimer:0,cement:1,stone:2,peel:3},
    apps:["plasticpaint","floor","protect"], url:SITE+"/product_b10a", line:"RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)"},
-  {id:"raysitive", cat:"own", own:true, name:"RaySitive", tag:"添加劑",
-   desc:"針對有機樹脂體系開發，應用於塗料、油墨、膠黏劑；部分規格可對標國際大廠。",
+  {id:"nextgen", cat:"own", own:true, name:"NextGen", tag:"實色與特殊功能保護",
+   desc:"提供實色保護與 UV 等特殊功能塗層方案，延伸建築與工業表面的功能設計。",
+   series:[["HyperDurays NXT","全球專利實色保護塗料，一層取代面漆＋卷材塗料＋底漆三層，降低碳足跡"],["適用基材","不鏽鋼、鋁、陽極處理、鈦；霧面質感"],["7 色","黑、白、青、綠、洋紅、黃、橘"],["UV Protection MT-0727U3","結構導入 UV 吸收劑，防止變色與材料劣化"]],
+   coat:{color:0,uv:3},
+   apps:["protect","bake"], url:SITE+"/product_b10a", line:"RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)"},
+  {id:"raysitive", cat:"own", own:true, name:"RaySitive", tag:"功能添加材料",
+   desc:"提供配方端功能提升與性能調整使用，主要面向材料與塗料開發客戶。",
    series:[["塗料／油墨／膠黏劑添加劑","品質穩定，歡迎洽詢"]],
    coat:{additive:0},
    apps:["arch","bake","ink","hma"], url:SITE+"/product_m2l", line:"RCI 自有品牌 (高性能陶瓷鍍膜/樹脂)"},
@@ -745,6 +805,10 @@ const PRODUCTS = [
    desc:"全球珠光顏料領導品牌，工業塗料與個人護理應用。",
    series:[["Iriodin®","珠光顏料，珍珠效果"],["Pyrisma®","高飽和度光艷珠光"],["Xirallic®","晶鑽顏料，水晶效果"],["Colorstream®","幻彩，多色角度變化"],["Meoxal®","金砂顏料，金屬光澤"],["Miraval®","宙光顏料，多彩閃耀"],["Iriotec®","功能粉體：雷射標記、導電、紅外線反射"],["Ronastar®／Colorona®／Timiron®","個人護理用珠光"]],
    apps:["arch","bake","plasticpaint","ink","eng","cosm","foil","conduct"], url:SITE+"/news/12-susonity-cooprate-in-asia-1.html", line:"SUSONITY 珠光顏料"},
+  {id:"phomera", cat:"pig", name:"Phomera", tag:"特殊色彩與效果材料",
+   desc:"特殊色彩與效果應用，詳細規格請洽業務。",
+   series:[["Phomera","特殊色彩與效果材料（規格請洽業務）"]],
+   apps:[], url:SITE},
   {id:"sudarshan", cat:"pig", name:"Sudarshan", tag:"顏料／色漿／染料（合併 Heubach 與 Clariant Colorants）",
    desc:"有機與無機色料，用於塗料、油墨、塑膠、化妝品等。",
    series:[["Colanyl®／Colanyl Oxide®","水性無樹脂色漿，低／零 VOC"],["Hostaperm®／Novoperm®","高性能有機顏料"],["PV Fast®","塑膠、纖維用高耐性顏料"],["HEUCOPHOS®","活性防蝕磷酸鹽顏料"],["HEUCODUR®／VANADUR®","高遮蓋耐候無機顏料"],["Agrocer®","種子著色顏料"],["Sanolin®／Duasyn®","水溶性染料，清潔、墨水、皮革"],["Sanodal®／Sanodye®／Sanodure®","鋁陽極染料（原開瑞色彩），耐光值可達 8 級"],["Hostafine®／Flexonyl®／AQUIS™","水性色漿：木器、文具、墨水、調色"],["Graphtol®／Licosperse™","經濟型塑膠顏料；礦物油基色漿（農化、肥料）"]],
@@ -858,9 +922,10 @@ function load(k){ try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ re
 $("#expoName").textContent = CONFIG.expoName;
 
 /* ===================== 路由 ===================== */
-const VIEWS = ["home","products","select","lab","contact","done"];
+const VIEWS = ["home","products","select","lab","contact","done","solution"];
 function route(){
   let v = (location.hash||"#home").slice(1);
+  if(v.startsWith("sol-")){ v = renderSolution(v.slice(4)) ? "solution" : "home"; }
   if(!VIEWS.includes(v)) v="home";
   if(v==="done" && !lastResult) v="home";
   VIEWS.forEach(x=>$("#v-"+x).hidden = x!==v);
@@ -868,6 +933,10 @@ function route(){
   const fab=$("#fabLine"); if(fab) fab.hidden = (v==="contact"||v==="done");
   $("#expoLabel").hidden = v!=="home" && window.innerWidth<380;
   window.scrollTo(0,0);
+  if(v==="products" && pendingFocus){
+    const id=pendingFocus; pendingFocus=null; renderProducts();
+    setTimeout(()=>{ const c=document.querySelector('[data-pid="'+id+'"]'); if(!c) return; c.scrollIntoView({block:"start"}); window.scrollBy(0,-70); const t=c.querySelector(".toggle"); if(t && t.getAttribute("aria-expanded")==="false") t.click(); c.classList.add("focus"); setTimeout(()=>c.classList.remove("focus"),1600); },50);
+  }
 }
 $("#backBtn").onclick = ()=>{ location.hash="#home"; };
 window.addEventListener("hashchange", route);
@@ -953,6 +1022,19 @@ const VIS = {
       <rect x="${x+36}" y="110" width="7" height="58" rx="3" fill="rgba(255,255,255,.2)"/><rect x="${x+36}" y="110" width="7" height="58" rx="3" fill="#0bd4b0" style="transform-origin:${x+39}px 168px;animation:gauge 6s ${i*2}s ease-out infinite"/>
       <text x="${x}" y="190" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">${t}</text>`).join("")}
   </svg>`,
+  // NextGen：三層塗裝 → 一層 NXT
+  nxt:`<svg class="pvis" viewBox="0 0 320 200" aria-hidden="true">
+    <text x="14" y="20" fill="#fff" font-size="12" font-weight="700">HyperDurays NXT｜一層取代三層</text>
+    <g font-size="10" font-weight="700" fill="#fff" text-anchor="middle">
+      <g style="animation:nx1 6s ease-in-out infinite"><rect x="20" y="44" width="130" height="22" rx="4" fill="#73c7ff"/><text x="85" y="59">面漆</text></g>
+      <g style="animation:nx2 6s ease-in-out infinite"><rect x="20" y="70" width="130" height="22" rx="4" fill="#0b9ef7"/><text x="85" y="85">卷材塗料</text></g>
+      <g style="animation:nx3 6s ease-in-out infinite"><rect x="20" y="96" width="130" height="22" rx="4" fill="#0d58aa"/><text x="85" y="111">底漆</text></g>
+      <g style="animation:nx4 6s ease-in-out infinite"><rect x="20" y="96" width="130" height="22" rx="4" fill="#0bd4b0"/><text x="85" y="111" fill="#0d3f7c">NXT 實色保護</text></g>
+      <rect x="20" y="122" width="130" height="16" rx="3" fill="#9fb3c8"/><text x="85" y="134" fill="#0d3f7c" font-size="9">不鏽鋼／鋁／陽極／鈦</text>
+    </g>
+    ${["#2a2f36","#f4f6f8","#21b6d6","#3faf6a","#d1428f","#f2c94c","#f08a3c"].map((c,i)=>`<rect x="${172+(i%4)*34}" y="${46+Math.floor(i/4)*42}" width="28" height="34" rx="5" fill="${c}" stroke="#fff" stroke-opacity=".5" style="transform-origin:${186+(i%4)*34}px ${63+Math.floor(i/4)*42}px;animation:pulse 3s ${i*.2}s ease-in-out infinite"/>`).join("")}
+    <text x="160" y="170" fill="#e6fffa" font-size="10.5" text-anchor="middle">7 色霧面實色＋UV 防護，降低碳足跡</text>
+  </svg>`,
   // 珠光
   pearl:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
     <defs><linearGradient id="gpearl" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
@@ -1020,7 +1102,7 @@ anodize:`<svg class="pvis" viewBox="0 0 320 120" aria-hidden="true">
 const VIS_OF = {hyperdurays:"droplet",duravance:"network",trayx:"coreshell",hydrorayx:"layers",raysitive:"disperse",
   susonity:"pearl",sudarshan:"swatch",aralon:"fluor",huayuan:"iron",modern:"dye",
   clariant:"film",siliconi:"bubble",borregaard:"porous",durazane:"stir",mitsui:"stir",nanox:"stir",
-  carbodeon:"diamond",swchem:"diamond",um:"carbon",quartzene:"porous",aeropor:"porous",anpoly:"porous",csrc:"carbon",alufinish:"anodize"};
+  carbodeon:"diamond",swchem:"diamond",um:"carbon",quartzene:"porous",aeropor:"porous",anpoly:"porous",csrc:"carbon",alufinish:"anodize",nextgen:"nxt",phomera:"swatch"};
 let visSeq=0;
 function visual(p){
   // 每次插入時把 id 改成唯一，避免多個 SVG 共用 defs 衝突
@@ -1033,7 +1115,7 @@ const CAT_SHORT={pig:"顏料／色料",add:"添加劑",resin:"樹脂",filler:"�
 const OWN_SHORT={hyperdurays:"鍍膜塗料",duravance:"樹脂與添加劑",trayx:"水性樹脂",hydrorayx:"水性塗料",raysitive:"添加劑"};
 const CAT_COLOR={own:"#116dcf",pig:"#d9573b",add:"#0b9ef7",resin:"#6b5bd6",filler:"#0bb594",surface:"#8a6a3c"};
 function brandLinks(){
-  const own=$("#ownBrands"), ag=$("#agentBrands");
+  const own=$("#ownBrands"), ag=$("#agentBrands"); if(!own||!ag) return;
   PRODUCTS.forEach(p=>{
     const a=el("a",{class:"bbtn"+(p.own?" own":""),href:p.url,target:"_blank",rel:"noopener"});
     a.style.setProperty("--c",CAT_COLOR[p.cat]);
@@ -1047,12 +1129,12 @@ function brandLinks(){
 /* ===================== 產品介紹 ===================== */
 const catLabel = id => CATS.find(c=>c.id===id).label;
 function productCard(p, opt={}){
-  const c = el("article",{class:"pcard anim"+(p.own?" ownc":"")});
+  const c = el("article",{class:"pcard anim"+(p.own?" ownc":""),"data-pid":p.id});
   if(opt.i!==undefined) c.style.setProperty("--i",opt.i);
   const box = p.own ? el("div",{class:"inner"}) : c;
   if(p.own) c.append(box);
   box.append(visual(p));
-  box.append(el("div",{class:"meta"}, el("span",{class:"tag"+(p.own?" own":""),text:p.own?"RCI 自有品牌":"代理品牌"}), ...(p.own?[el("span",{class:"tag madeby",text:"MADE BY RCI"})]:[el("span",{class:"tag",text:catLabel(p.cat)})])));
+  box.append(el("div",{class:"meta"}, el("span",{class:"tag"+(p.own?" own":""),text:p.own?"RCI 自有品牌":"代理品牌"}), ...(p.own?[el("span",{class:"tag madeby",text:"MADE BY RCI"})]:[el("span",{class:"tag",text:GROUPS.find(g=>g.id===grpOf(p)).label})])));
   box.append(el("h3",{text:p.name}), el("div",{class:"brand",text:p.tag}));
   if(opt.why) box.append(el("div",{class:"why",text:"✓ 符合："+opt.why}));
   const rows = opt.rows ? opt.rows.map(i=>p.series[i]) : p.series;
@@ -1070,30 +1152,85 @@ function productCard(p, opt={}){
 let prodCat = "all";
 function renderProducts(){
   const f=$("#prodFilter"); f.innerHTML="";
-  [{id:"all",label:"全部"},...CATS].forEach(c=>{ const b=el("button",{class:"chip",type:"button","aria-pressed":String(c.id===prodCat),text:c.label}); b.onclick=()=>{prodCat=c.id;renderProducts();}; f.append(b); });
+  [{id:"all",label:"全部"},...GROUPS].forEach(c=>{ const b=el("button",{class:"chip",type:"button","aria-pressed":String(c.id===prodCat),text:c.label}); b.onclick=()=>{prodCat=c.id;renderProducts();}; f.append(b); });
   const list=$("#prodList"); list.innerHTML="";
-  CATS.forEach(c=>{
-    if(prodCat!=="all" && prodCat!==c.id) return;
-    const items=PRODUCTS.filter(p=>p.cat===c.id); if(!items.length) return;
-    if(c.id==="own") list.append(ownHead());
-    else if(prodCat==="all") list.append(el("div",{class:"grouphead",text:c.label}));
-    items.forEach((p,i)=>list.append(productCard(p,{i})));
-    if(c.id==="pig") list.append(moreBrands());
+  GROUPS.forEach(g=>{
+    if(prodCat!=="all" && prodCat!==g.id) return;
+    let items=PRODUCTS.filter(p=>grpOf(p)===g.id);
+    const ord=GRP_ORDER[g.id]; if(ord) items.sort((a,b)=>((ord.indexOf(a.id)+1)||99)-((ord.indexOf(b.id)+1)||99));
+    if(!items.length) return;
+    if(g.id==="own") list.append(ownHead());
+    else list.append(el("div",{class:"grouphead",text:g.label}));
+    if(g.id==="tech"){
+      const main=items.filter(p=>ord.includes(p.id)), rest=items.filter(p=>!ord.includes(p.id));
+      main.forEach((p,i)=>list.append(productCard(p,{i})));
+      if(rest.length){ list.append(el("div",{class:"subhead",text:"其他原料品牌"})); rest.forEach((p,i)=>list.append(productCard(p,{i}))); }
+    } else items.forEach((p,i)=>list.append(productCard(p,{i})));
+    if(g.id==="color") list.append(moreBrands());
   });
 }
 
 function ownHead(){
   const h=el("div",{class:"ownhead anim"});
-  h.innerHTML=`<div class="eyebrow">RCI Original · 台灣研發</div><h3>RCI 自有品牌</h3><p>專注矽基預陶瓷（Pre-ceramic）材料：開發新的化學結構，而非單純混合。Thinner is Better, Less is More。</p><div class="stats"><div><b>600+</b><span>活躍客戶</span></div><div><b>1–10 µm</b><span>超薄塗層</span></div></div>`;
+  h.innerHTML=`<div class="eyebrow">RCI Original · 台灣研發</div><h3>RCI 自有高機能材料與塗層品牌</h3><p>從核心材料、應用配方到完成型功能塗料，提供建築與工業表面的防護、易潔、耐候與水性解決方案。</p><div class="values"><div><b>Surface Protection</b><span>表面防護</span></div><div><b>Waterborne Solutions</b><span>水性方案</span></div><div><b>Application Development</b><span>應用開發</span></div></div>`;
   return h;
 }
+const ICON = {
+  stain:'<path d="M4 20 20 4M9 4h11v11"/>',
+  hydro:'<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/>',
+  weather:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  corrosion:'<path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/>',
+  water:'<path d="M7 3h10l-1 5H8L7 3Z"/><path d="M8 8c0 3-2 4-2 8a6 6 0 0 0 12 0c0-4-2-5-2-8"/>',
+  graffiti:'<path d="m15 4 5 5L9 20H4v-5L15 4Z"/><path d="m13 6 5 5"/>',
+  special:'<path d="M12 2 15 9l7 .6-5.3 4.6L18.3 21 12 17.3 5.7 21l1.6-6.8L2 9.6 9 9l3-7Z"/>'
+};
+const SOLUTIONS = [
+  {id:"stain", label:"抗污易潔", desc:"表面平滑緻密，灰塵、油污不易附著，雨水沖刷或輕輕擦拭即可清潔。", items:[["hyperdurays",[1,2,4]],["duravance",[3,5]]]},
+  {id:"hydro", label:"疏水保護", desc:"水接觸角最高 125°，雨水帶走髒污，減少吸水、藻類與霉斑。", items:[["hyperdurays",[0,1]],["duravance",[1,3]]]},
+  {id:"weather", label:"耐候", desc:"通過 SGS 4000 小時耐候測試，不黃變、不粉化，長效保色保光。", items:[["hyperdurays",[0,1]],["trayx",[0,3]],["nextgen",[3]]]},
+  {id:"corrosion", label:"防腐蝕", desc:"緻密的塊狀結晶結構阻隔酸鹼與鹽霧，適用戶外鋼構、管線與工業環境。", items:[["hyperdurays",[5,1]],["duravance",[1,3]]]},
+  {id:"water", label:"水性塗料", desc:"低 VOC 水性方案，依產品可直接使用、加水調整或配方導入。", items:[["trayx",null],["hydrorayx",null]]},
+  {id:"graffiti", label:"抗塗鴉", desc:"油性筆、白板筆、原子筆塗鴉，用乾紙巾就能擦除，公共空間好維護。", items:[["hyperdurays",[1,3]],["duravance",[3,5]]]},
+  {id:"special", label:"特殊材料", desc:"建築輕質填料、珠光效果、生質流變材料與鋁陽極處理等特殊材料。", items:[["aeropor",null],["susonity",null],["phomera",null],["borregaard",null],["alufinish",null]]}
+];
+const SERIES = [
+  {pid:"hyperdurays", name:"HyperDurays", tag:"高機能建築表面保護塗料", pts:"抗污、疏水、易潔、耐候、防腐蝕"},
+  {pid:"trayx", name:"T-RayX + HydroRayX", tag:"水性高機能塗料解決方案", pts:"依牌號可直接使用、加水調整或配方導入"},
+  {pid:"duravance", name:"Duravance", tag:"高性能塗層核心材料", pts:"適合塗料／建材製造商與配方開發"},
+  {pid:"nextgen", name:"NextGen", tag:"實色與特殊功能保護", pts:"實色保護、UV 等功能延伸"}
+];
+const SPEC = [["aeropor","Aeropor","建築用輕質填料"],["susonity","SUSONITY","珠光效果顏料"],["phomera","Phomera","特殊色彩與效果"],["borregaard","Borregaard","生質流變與分散材料"],["alufinish","AluFinish","鋁陽極處理藥水"]];
+let pendingFocus=null;
+function goProduct(pid){ pendingFocus=pid; prodCat="all"; if(location.hash==="#products") route(); else location.hash="#products"; }
 function showcase(){
-  const box=$("#showcase");
-  PRODUCTS.filter(p=>p.own).forEach(p=>{ const a=el("a",{class:"sc",href:"#products"}); a.append(visual(p)); const d=el("div"); d.append(el("b",{text:p.name}),el("span",{text:p.tag})); a.append(d); box.append(a); });
+  const ng=$("#needGrid");
+  if(ng) SOLUTIONS.forEach((x,i)=>{ const a=el("a",{class:"need",href:"#sol-"+x.id}); a.style.setProperty("--i",i); a.innerHTML=`<span class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICON[x.id]}</svg></span><b>${x.label}</b>`; ng.append(a); });
+  const sg=$("#seriesGrid");
+  if(sg) SERIES.forEach(x=>{ const p=byId(x.pid); const a=el("a",{class:"s4",href:"#products"}); a.addEventListener("click",e=>{e.preventDefault();goProduct(x.pid);}); a.append(visual(p)); const d=el("div"); d.append(el("b",{text:x.name}),el("span",{class:"t",text:x.tag}),el("span",{class:"p",text:"→ "+x.pts})); a.append(d); sg.append(a); });
+  const sp=$("#specGrid");
+  if(sp) SPEC.forEach(([pid,n,t])=>{ const a=el("a",{class:"spc",href:"#products"}); a.addEventListener("click",e=>{e.preventDefault();goProduct(pid);}); a.append(el("b",{text:n}),el("span",{text:t})); sp.append(a); });
+  const cf=$("#ctaFind"); if(cf) cf.onclick=()=>$("#needSec").scrollIntoView({behavior:"smooth",block:"start"});
+  const sb=$("#solBack"); if(sb) sb.onclick=()=>{ location.hash="#home"; setTimeout(()=>$("#needSec").scrollIntoView({block:"start"}),60); };
 }
+let curSol=null;
+function renderSolution(id){
+  const x=SOLUTIONS.find(s=>s.id===id); if(!x) return false; curSol=x;
+  $("#solHead").innerHTML=`<div class="eyebrow">Solution</div><h2><span class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICON[x.id]}</svg></span>${x.label}</h2><p class="lead">${x.desc}</p>`;
+  const L=$("#solList"); L.innerHTML="";
+  x.items.forEach(([pid,rows],i)=>L.append(productCard(byId(pid),{why:x.label,rows:rows||undefined,i})));
+  if(x.id==="special") L.append(moreBrands());
+  return true;
+}
+$("#solToContact").addEventListener("click",()=>{
+  if(!curSol) return;
+  const ps=curSol.items.map(([pid])=>byId(pid));
+  ps.forEach(p=>{ if(p.line) setChecked("lines",p.line,true); });
+  setChecked("needs", OPTS.needs[1], true);
+  const other=$("#o-needs-other-text"); if(other){ other.value="感興趣方案："+curSol.label+"（"+ps.map(p=>p.name).join("、")+"）"; setChecked("needs","__other__",true); }
+});
 function moreBrands(){
   const c=el("a",{class:"pcard morebrands",href:"#contact"});
-  c.append(el("b",{text:"更多品牌推薦，請洽業務"}), el("span",{text:"顏料／色料還有更多品牌與系列，留下資料由業務為您介紹 ›"}));
+  c.append(el("b",{text:"更多品牌推薦，請洽業務"}), el("span",{text:"色彩與效果材料還有更多品牌與系列，留下資料由業務為您介紹 ›"}));
   return c;
 }
 /* ===================== 產品選型 ===================== */
@@ -1216,7 +1353,6 @@ function showDone(title, text, summary){
   lastResult = summary;
   $("#doneTitle").textContent = title;
   $("#doneText").textContent = text;
-  $("#doneSummary").textContent = summary;
   const url = lineUrl(summary);
   $("#lineBtn").hidden = !url;
   if(url) $("#lineBtn").href = url;
@@ -1226,10 +1362,7 @@ $("#lineBtn").addEventListener("click", ()=>{
   // 點擊時先複製，到 LINE 後可直接貼上；預填訊息也會帶入聊天框
   try{ navigator.clipboard.writeText(lastResult||"").then(()=>toast("已複製，開啟 LINE 後貼上即可"),()=>{}); }catch(e){}
 });
-$("#copyBtn").onclick = async ()=>{
-  try{ await navigator.clipboard.writeText(lastResult||""); toast("已複製"); }
-  catch(e){ const r=document.createRange(); r.selectNodeContents($("#doneSummary")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("已選取，請按複製"); }
-};
+
 
 function req(id){ const i=$("#"+id); const ok=i.value.trim()!==""; i.closest(".field").classList.toggle("bad",!ok); return ok; }
 function validEmail(id){ const i=$("#"+id); const ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(i.value.trim()); i.closest(".field").classList.toggle("bad",!ok); return ok; }
@@ -1253,9 +1386,9 @@ $("#labForm").addEventListener("submit", async e=>{
     }
   }catch(err){ /* 網路失敗：改由 LINE 傳送 */ }
   btn.disabled=false; btn.textContent="送出報名";
-  showDone(saved?"報名成功！":"請完成最後一步",
-    saved ? (FROM_LINE ? "工作人員會依序為您安排。請按下方按鈕把報名資料傳給 RCI，活動通知會在 LINE 上告訴您。" : "工作人員會依序為您安排。也歡迎加入 RCI 官方 LINE，活動通知會在 LINE 上告訴您。")
-          : "請按下方按鈕，把報名資料傳到 RCI 官方 LINE，即完成報名。",
+  showDone("報名已收到！",
+    saved ? "我們已記錄您的色彩實驗室報名，工作人員將為您安排體驗，相關通知會透過 RCI 官方 LINE 告訴您。"
+          : "網路有點不穩，請按「回到 LINE」把報名資料傳給我們，即完成報名。",
     summary);
   store("rci_lab_done", true);
 });
@@ -1294,9 +1427,9 @@ $("#leadForm").addEventListener("submit", async e=>{
   let saved=false;
   try{ await postGoogleForm(CONFIG.leadForm, pairs); saved=true; }catch(err){}
   btn.disabled=false; btn.textContent="送出資料";
-  showDone(saved?"已收到您的資料":"網路不穩，請完成最後一步",
-    saved ? (FROM_LINE ? "最後一步：按下方按鈕把資料傳給 RCI 業務，我們會盡快在 LINE 上與您聯繫。" : "最後一步：加入 RCI 官方 LINE，把資料傳給我們，即可獲取最新產品與活動資訊。")
-          : "資料可能沒有送出成功。請按下方按鈕傳到 RCI 官方 LINE，或複製資料交給現場人員。",
+  showDone("需求已收到！",
+    saved ? "我們已記錄您感興趣的產品與應用需求，後續將由雷暘團隊協助提供適合的產品資料或樣品建議。"
+          : "網路有點不穩，請按「回到 LINE」把資料傳給我們，雷暘團隊會盡快與您聯繫。",
     summary);
 });
 
@@ -1312,8 +1445,6 @@ function applySource(){
   const fab=$("#fabLine"); if(fab) fab.lastChild.textContent="留下資料，業務主動聯繫您";
   const lead=$("#contactLead"); if(lead) lead.textContent="感謝您透過 RCI 官方 LINE 進入！留下資料，業務會盡快與您聯繫，並提供樣品與型錄。";
   const bn=$("#lineBanner"); if(bn) bn.hidden=true;
-  const how=$("#howto"); if(how) how.innerHTML="<li>按下綠色按鈕，資料會自動複製並回到 RCI 官方 LINE</li><li>在聊天框「貼上」後送出，業務就會與您聯繫</li>";
-  const lb=$("#lineBtn"); if(lb){ const t=[...lb.childNodes].reverse().find(n=>n.nodeType===3&&n.textContent.trim()); if(t) t.textContent=" 傳送資料給 RCI 業務\n"; }
 }
 
 /* ===================== 啟動 ===================== */
